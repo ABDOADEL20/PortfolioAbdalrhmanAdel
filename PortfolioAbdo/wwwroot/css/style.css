@@ -345,13 +345,18 @@ button:focus {
 ============================================================================================ */
 .home_banner_area {
   z-index: 1;
-  background: url(../img/banner/home-banner.png) no-repeat top center;
-  background-position: center;
-  background-size: cover; }
-  .home_banner_area .banner_inner {
-    width: 100%; }
-    .home_banner_area .banner_inner .home_right_img {
-      padding-top: 197px; }
+  background: url(../img/BlackElegantandMinimalistFurnitureLogo2.png) no-repeat top center;
+  background-position:center;
+  background-size:600px; 
+}
+
+    .home_banner_area .banner_inner {
+        width: 100%;
+    }
+        .home_banner_area .banner_inner .home_right_img {
+            padding-top: 197px;
+            padding-left: 90px;
+        }
       @media (max-width: 1480px) {
         .home_banner_area .banner_inner .home_right_img img {
           max-width: 100%;
@@ -363,7 +368,8 @@ button:focus {
       vertical-align: middle;
       align-self: center; }
     .home_banner_area .banner_inner .banner_content {
-      text-align: left; }
+      text-align: left; 
+    }
       @media (max-width: 991px) {
         .home_banner_area .banner_inner .banner_content {
           margin-top: 150px; } }
