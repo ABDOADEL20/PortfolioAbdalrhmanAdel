@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-9">
+        <form asp-action="Create">
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+            <div class="form-group">
+                <label class="control-label">@SharedLocalizer["ID:"]</label>
+                <input type="text" readonly class="form-control" />
+                @*<span asp-validation-for="AccountNumber" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label class="control-label">@SharedLocalizer["Name"]:</label>
+                <input type="text" class="form-control" />
+                @*<span asp-validation-for="BeneficiaryName" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <input type="submit" value=@SharedLocalizer["Update"] class="btn btn-primary" />
+            </div>
+        </form>
+        <a @*asp-area="Users" asp-controller="Roles" asp-action="AddOrRemoveUsers" asp-route-RoleId="@Model.Id"*@ class="btn btn-warning btn-block" onclick="showInPopup('@Url.Action("AddOrRemoveUsers","Roles",new { Area = "Dashboards" },null,null)', '@SharedLocalizer["AddOrRemoveUsers"]')">@SharedLocalizer["AddOrRemoveUsersWithRole"]</a>
+    </div>
+</div> 
+
+<div class="modal fade" tabindex="-1" role="dialog" id="form-modal">
+    <div class="modal-dialog" role="form">
+        <div class="modal-content" style="background-image: linear-gradient(45deg, #1565C0, #1E88E5); ">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>

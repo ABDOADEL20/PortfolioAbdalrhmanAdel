@@ -13,5 +13,10 @@ namespace PortfolioAbdo.Areas.Home.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult CreateTestimonial()
+        {
+            return View();
+        }
     }
 }

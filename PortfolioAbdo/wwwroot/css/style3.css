@@ -1,6 +1,6 @@
 ﻿
 
-h1,
+/*h1,
 h2,
 h3,
 h4,
@@ -10,12 +10,12 @@ h6 {
     font-weight: 700;
     text-transform: uppercase;
     color: #343a40;
-}
+}*/
 
-h1 {
+/*h1 {
     font-size: 6rem;
     line-height: 5.5rem;
-}
+}*/
 
 h2 {
     font-size: 3.5rem;
@@ -303,10 +303,10 @@ section.resume-section {
 }
 
 .portfolio-modal .modal-dialog {
-    height: 25px;
+   /* height: 25px;*/
     max-width: 100%;
-    /*    min-height: 100%;
-*/ margin-top: 80px;
+/*    min-height: 100%;
+*/    margin-top: 105px;
     margin-left: 30px;
     margin-right: 30px;
 /*    padding: 0;

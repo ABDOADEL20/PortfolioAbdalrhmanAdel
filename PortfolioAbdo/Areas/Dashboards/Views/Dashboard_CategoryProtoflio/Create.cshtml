@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = SharedLocalizer["Create"];
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-7">
+        <form asp-action="Create">
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+            <div class="form-group">
+                <label class="control-label">@SharedLocalizer["NameCategory:"]</label>
+                <input type="text" class="form-control" />
+                @*<span asp-validation-for="BeneficiaryName" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@SharedLocalizer["Create"]" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

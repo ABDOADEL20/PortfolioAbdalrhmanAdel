@@ -2,11 +2,64 @@
   "version": "1.0",
   "defaultProvider": "cdnjs",
   "libraries": [
+    //{
+    //  "library": "jquery@3.2.1",
+    //  "destination": "wwwroot/jquery/",
+    //  "files": [
+    //    "jquery.min.js"
+    //  ]
+    //},
+    //{
+    //  "library": "jquery@3.6.0",
+    //  "destination": "wwwroot/jquery/"
+    //}
+    ////{
+    ////  "library": "jquery@3.5.1",
+    ////  "destination": "wwwroot/js/jquery/",
+    ////  "files": [
+    ////    "jquery.js"
+    ////  ]
+    ////}
     {
-      "library": "jquery@3.2.1",
+      "library": "jquery@3.5.1",
       "destination": "wwwroot/jquery/",
       "files": [
-        "jquery.min.js"
+        "jquery.js"
+      ]
+    },
+    {
+      "library": "datatables.net@1.12.1",
+      "destination": "wwwroot/jquery/",
+      "files": [
+        "jquery.dataTables.min.js"
+      ]
+    },
+    {
+      "library": "datatables@1.10.21",
+      "destination": "wwwroot/jquery/",
+      "files": [
+        "js/dataTables.bootstrap4.min.js"
+      ]
+    },
+    {
+      "library": "twitter-bootstrap@4.5.2",
+      "destination": "wwwroot/css/bootstrap/",
+      "files": [
+        "css/bootstrap.css"
+      ]
+    },
+    {
+      "library": "datatables@1.10.21",
+      "destination": "wwwroot/css/bootstrap/",
+      "files": [
+        "css/dataTables.bootstrap.min.css"
+      ]
+    },
+    {
+      "library": "twitter-bootstrap@4.5.2",
+      "destination": "wwwroot/css/bootstrap/",
+      "files": [
+        "css/bootstrap.min.css"
       ]
     }
   ]

@@ -1,48 +1,140 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PortfolioAbdo</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="~/img/BlackElegantandMinimalistFurnitureLogo3.png" type="image/png">
+    <title>Abdalrhman Adel Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" href="~//vendors/linericon/style.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/vendors/nice-select/css/nice-select.css">
+    <!-- main css -->
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css'>
+    <link href="~/css/style2.css" rel="stylesheet" />
+    <link href="~/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/assets/owl.theme.default.css" rel="stylesheet" />
+    <link href="~/css/all.css" rel="stylesheet" />
+
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/style3.css" rel="stylesheet" />
+    <link href="~/css/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" />
+    <link href="~/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="~/vendors/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link href="~/vendors/lightbox/simpleLightbox.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500|Rubik:500,700" rel="stylesheet">
+
+    <link href="~/assets/css/animate.css" rel="stylesheet" />
+    <link href="~/assets/css/icons.css" rel="stylesheet" />
+    <link href="~/assets/css/pace.min.css" rel="stylesheet" />
+    <link href="~/assets/css/sidebar-menu.css" rel="stylesheet" />
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PortfolioAbdo</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <!--================ Start Header Area =================-->
+    <header class="header_area">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <a class="navbar-brand logo_h" href="index.html"><img src="~/img/Black Elegant and Minimalist Furniture Logo.png" style="height:90px; width:90px;" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav justify-content-end">
+                            <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#sendtestimonial">Send Me Testimonial</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#footercontact">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-area="Identity" asp-controller="Account" asp-action="Login">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section class="content">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </section>
+    <!--================Footer Area =================-->
+    <footer class="footer_area" id="footercontact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="footer_top flex-column">
+                        <div class="footer_logo">
+                            <a href="#">
+                                <img src="~/img/Black_Elegant_and_Minimalist_Furniture_Logo-removebg-preview.png" style="height:180px; width:180px;" alt="">
+                            </a>
+                            <h4>Follow Me</h4>
+                        </div>
+                        <div class="footer_social">
+                            <a href="https://www.facebook.com/Body.Adel.1998"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/abdoadel2025"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/in/abdalrhman-adel-73039b1ab/"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - PortfolioAbdo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row footer_bottom justify-content-center">
+                <p class="col-lg-8 col-sm-12 footer-text">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> Abdalrhman Adel | .Net Developer
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <!--================End Footer Area =================-->
+    <!-- Optional JavaScript -->
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="~/js/owl.carousel.js"></script>
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/jquery/jquery.min.js"></script>
+    <script src="~/js/popper.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/stellar.js"></script>
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/vendors/nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="~/vendors/isotope/imagesloaded.pkgd.min.js"></script>
+    <script src="~/vendors/isotope/isotope-min.js"></script>
+    <script src="~/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/js/mail-script.js"></script>
+    <!--gmaps Js-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="~/js/gmaps.min.js"></script>
+    <script src="~/js/theme.js"></script>
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script>
+    <script src="~/js/script.js"></script>
+
+    <script src="~/assets/js/app-script.js"></script>
+    <script src="~/assets/js/index.js"></script>
+    <script src="~/assets/js/pace.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/sidebar-menu.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
 </body>
 </html>

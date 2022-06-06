@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = SharedLocalizer["HomeDashboard"];
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+}
+<div style="position:center">
+    <div class="row mt-3">
+        <div class="col-lg-10">
+            <div class="card">
+                <div class="card-body">
+                    <center>
+                        <div class="card-title">@SharedLocalizer["HomeForm"]</div>
+                    </center>
+                    <hr>
+                    <form class="form-group" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="input-6">@SharedLocalizer["BannerName"]</label>
+                            <input type="text" class="form-control form-control-rounded" id="input-6" placeholder="@SharedLocalizer["EnterBannerName"]">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-7">@SharedLocalizer["BannerJobTitle"]</label>
+                            <input type="text" class="form-control form-control-rounded" id="input-7" placeholder="@SharedLocalizer["EnterYourBannerJobTitle"]">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-9">@SharedLocalizer["IntroduceYourSelf"]</label>
+                            <input type="text" class="form-control form-control-rounded" id="input-9" placeholder="@SharedLocalizer["EnterIntroduceYourSelf"]">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-10">@SharedLocalizer["YearsofExperience"]</label>
+                            <input type="text" class="form-control form-control-rounded" id="input-10" placeholder="@SharedLocalizer["EnterYearsofExperience"]">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-10">@SharedLocalizer["ExperienceCompaniesPhoto"]</label>
+                            <input type="file" class="form-control-file form-control-rounded" id="input-10" placeholder="@SharedLocalizer["EnterExperienceCompaniesPhoto"]">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-8">@SharedLocalizer["CV"]</label>
+                            <input type="file" class="form-control-file form-control-rounded" id="input-8" placeholder="@SharedLocalizer["EnterYourCV"]">
+                        </div>
+                        <center>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-light btn-round px-5"><i class="icon-plus"></i>@SharedLocalizer["Submit"]</button>
+                            </div>
+                        </center>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
