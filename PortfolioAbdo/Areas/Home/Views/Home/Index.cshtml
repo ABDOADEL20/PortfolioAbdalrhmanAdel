@@ -10,29 +10,59 @@
 <body>
     <!--================ Start Home Banner Area =================-->
     <section class="home_banner_area" id="home">
-        <div class="banner_inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="banner_content">
-                            <h3 class="text-uppercase">Hell0</h3>
-                            <h1 class="text-uppercase">I am Abdalrhman Adel</h1>
-                            <h5 class="text-uppercase">Junior .Net Developer</h5>
-                            <div class="d-flex align-items-center">
-                                <a class="primary_btn" href="#"><span>Hire Me</span></a>
-                                <a class="primary_btn tr-bg" href="#"><span>Get CV</span></a>
+            <div class="banner_inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="banner_content">
+                                <h3 class="text-uppercase">Hell0</h3>
+                                <h1 class="text-uppercase">I am Abdalrhman Adel</h1>
+                                <h5 class="text-uppercase">Junior .Net Developer</h5>
+                                <div class="align-items-center">
+                                    <a class="primary_btn" href="#"><span>Hire Me</span></a>
+                                    <a class="primary_btn tr-bg" href="#"><span>Get CV</span></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="home_right_img">
-                            <img class="" src="~/img/banner/home-right.png" alt="">
+                        <div class="col-lg-5">
+                            <div class="home_right_img">
+                                <img class="" src="~/img/banner/home-right.png" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+    <!--<section id="home" class="intro-section">
+        <div class="container">
+            <div class="row align-items-center text-white">-->
+                <!-- START THE CONTENT FOR THE INTRO  -->
+                <!--<div class="col-md-6 intros text-start">
+                    <div class="banner_content">
+                        <h3 class="text-uppercase">Hello</h3>
+                    </div>
+                        <h1 class="display-2--intro text-uppercase">I am Abdalrhman Adel</h1>
+                        <h5 class="display-2--description">
+                            Junior .Net Developer
+                        </h5>
+
+                        <button type="button" class="rounded-pill btn-rounded">
+                            Get CV
+                            <span><i class="fas fa-arrow-right"></i></span>
+                        </button>
+                    </div>-->
+                    <!-- START THE CONTENT FOR THE VIDEO -->
+                    <!--<div class="col-md-6 intros text-end">
+                        <div class="video-box">
+                            <img src="~/img/banner/home-right.png" class="img-fluid">
+
+                        </div>
+                    </div>
+                </div>
         </div>
-    </section>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,160L48,176C96,192,192,224,288,208C384,192,480,128,576,133.3C672,139,768,213,864,202.7C960,192,1056,96,1152,74.7C1248,53,1344,107,1392,133.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+    </section>-->
     <!--================ End Home Banner Area =================-->
     <!--================ Start About Us Area =================-->
     <section class="about_area section_gap" id="about">
@@ -60,7 +90,7 @@
                             is in beast beginning signs open god you're gathering whose gathered cattle let.
                             Creature whales fruit unto meat the life beginning all in under give two.
                         </p>
-                        <a class="primary_btn" href="#"><span>Download CV</span></a>
+                        <a class="primary_btn" asp-action="DownloadFile" asp-controller="Home" asp-area="Home"><span>Download CV</span></a>
                     </div>
                 </div>
             </div>
@@ -283,7 +313,7 @@
                         <h5>
                             Ronne Galle <br />
                             <span> Project Manager </span>
-                            <br/>
+                            <br />
                             <span style="font-size:15px;">abdodel5@gmail.com</span>
                         </h5>
                         <p class="card-text">

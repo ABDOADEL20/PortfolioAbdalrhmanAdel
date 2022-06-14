@@ -1,4 +1,4 @@
-﻿
+﻿@model Category_PortoflioVm
 @{
     ViewData["Title"] = SharedLocalizer["Create"];
     Layout = null;
@@ -6,12 +6,12 @@
 
 <div class="row">
     <div class="col-md-7">
-        <form asp-action="Create">
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        <form asp-action="Create" asp-controller="Dashboard_CategoryProtoflio" asp-area="Dashboards" onsubmit="return jQueryAjaxPost(this);">
+            @*<div asp-validation-summary="All" class="text-danger"></div>*@
             <div class="form-group">
-                <label class="control-label">@SharedLocalizer["NameCategory:"]</label>
-                <input type="text" class="form-control" />
-                @*<span asp-validation-for="BeneficiaryName" class="text-danger"></span>*@
+                <label asp-for="Category_Name" class="control-label">@SharedLocalizer["NameCategory:"]</label>
+                <input asp-for="Category_Name" type="text" class="form-control" />
+                <span asp-validation-for="Category_Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="@SharedLocalizer["Create"]" class="btn btn-primary" />

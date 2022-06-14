@@ -1,48 +1,48 @@
-﻿
+﻿@model PortfolioVm
 @{
     Layout = null;
 }
 
 <div class="row">
     <div class="col-md-9">
-        <form asp-action="Create" enctype="multipart/form-data">
+        <form asp-action="Create" asp-controller="Dashboard_Protoflio" asp-area="Dashboards" enctype="multipart/form-data" id="my-form" onsubmit="return jQueryAjaxPost(this);">
             @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
             <div class="form-group">
-                <label class="control-label">@SharedLocalizer["ProjectName"]:</label>
-                <input type="text" class="form-control" />
-                @*<span asp-validation-for="BeneficiaryName" class="text-danger"></span>*@
+                <label asp-for="Project_Name" class="control-label">@SharedLocalizer["ProjectName"]:</label>
+                <input asp-for="Project_Name" type="text" class="form-control" />
+                <span asp-validation-for="Project_Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">@SharedLocalizer["ProjectPhoto"]:</label>
-                <input type="file" class="form-control-file form-control-rounded" />
-                @*<span asp-validation-for="BeneficiaryName" class="text-danger"></span>*@
+                <label for="input-8" asp-for="Project_Photo">@SharedLocalizer["Photo"]</label>
+                <input type="file" asp-for="Project_Photo" class="form-control-file form-control-rounded" id="input-8" placeholder="@SharedLocalizer["EnterYourPhoto"]"  accept=".jpg,.png">
+                <span asp-validation-for="Project_Photo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">@SharedLocalizer["ProjectService"]:</label>
-                <select class="custom-select">
-                    <option>Web Dev</option>
+                <label asp-for="Category_ProtoflioId" class="control-label">@SharedLocalizer["ProjectService"]:</label>
+                <select asp-for="Category_ProtoflioId" asp-items="(SelectList)ViewBag.catgportfolio" class="form-control">
+                    <option></option>
                 </select>
-                @*<span asp-validation-for="BeneficiaryName" class="text-danger"></span>*@
+                <span asp-validation-for="Category_ProtoflioId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">@SharedLocalizer["ProjectDescription"]:</label>
-                <textarea name="Description" placeholder="Description" id="message" rows="8" class="shadow form-control form-control-lg"></textarea>
-                @*<span asp-validation-for="BeneficiaryName" class="text-danger"></span>*@
+                <label asp-for="Project_Description" class="control-label">@SharedLocalizer["ProjectDescription"]:</label>
+                <textarea asp-for="Project_Description" placeholder="Description" rows="8" class="shadow form-control form-control-lg"></textarea>
+                <span asp-validation-for="Project_Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">@SharedLocalizer["ProjectClient"]:</label>
-                <input type="text" class="form-control" />
-                @*<span asp-validation-for="BeneficiaryName" class="text-danger"></span>*@
+                <label asp-for="Project_Client" class="control-label">@SharedLocalizer["ProjectClient"]:</label>
+                <input asp-for="Project_Client" type="text" class="form-control" />
+                <span asp-validation-for="Project_Client" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">@SharedLocalizer["ProjectDate"]:</label>
-                <input type="date" class="form-control" />
-                @*<span asp-validation-for="BeneficiaryName" class="text-danger"></span>*@
+                <label asp-for="Project_Date" class="control-label">@SharedLocalizer["ProjectDate"]:</label>
+                <input asp-for="Project_Date" type="date" class="form-control" />
+                <span asp-validation-for="Project_Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">@SharedLocalizer["ProjectGitHubLink"]:</label>
-                <input type="url" class="form-control" />
-                @*<span asp-validation-for="BeneficiaryName" class="text-danger"></span>*@
+                <label asp-for="Project_GitHub" class="control-label">@SharedLocalizer["ProjectGitHubLink"]:</label>
+                <input asp-for="Project_GitHub" type="url" class="form-control" />
+                <span asp-validation-for="Project_GitHub" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value=@SharedLocalizer["Create"] class="btn btn-primary" />

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@await Component.InvokeAsync("NToastNotify")
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -26,6 +28,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.6.0/dt-1.12.1/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchpanes/2.0.1/css/searchPanes.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.4.0/css/select.dataTables.min.css" />
+    @*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />*@
+
+
     @*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />*@
 
     @*<link href="~/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
@@ -208,41 +215,41 @@
         </footer>
         <!--End footer-->
         <!--start color switcher-->
-        <div class="right-sidebar">
-            <div class="switcher-icon">
-                <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
-            </div>
-            <div class="right-sidebar-content">
+        @*<div class="right-sidebar">
+                <div class="switcher-icon">
+                    <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
+                </div>
+                <div class="right-sidebar-content">
 
-                <p class="mb-0">Gaussion Texture</p>
-                <hr>
+                    <p class="mb-0">Gaussion Texture</p>
+                    <hr>
 
-                <ul class="switcher">
-                    <li id="theme1"></li>
-                    <li id="theme2"></li>
-                    <li id="theme3"></li>
-                    <li id="theme4"></li>
-                    <li id="theme5"></li>
-                    <li id="theme6"></li>
-                </ul>
+                    <ul class="switcher">
+                        <li id="theme1"></li>
+                        <li id="theme2"></li>
+                        <li id="theme3"></li>
+                        <li id="theme4"></li>
+                        <li id="theme5"></li>
+                        <li id="theme6"></li>
+                    </ul>
 
-                <p class="mb-0">Gradient Background</p>
-                <hr>
+                    <p class="mb-0">Gradient Background</p>
+                    <hr>
 
-                <ul class="switcher">
-                    <li id="theme7"></li>
-                    <li id="theme8"></li>
-                    <li id="theme9"></li>
-                    <li id="theme10"></li>
-                    <li id="theme11"></li>
-                    <li id="theme12"></li>
-                    <li id="theme13"></li>
-                    <li id="theme14"></li>
-                    <li id="theme15"></li>
-                </ul>
+                    <ul class="switcher">
+                        <li id="theme7"></li>
+                        <li id="theme8"></li>
+                        <li id="theme9"></li>
+                        <li id="theme10"></li>
+                        <li id="theme11"></li>
+                        <li id="theme12"></li>
+                        <li id="theme13"></li>
+                        <li id="theme14"></li>
+                        <li id="theme15"></li>
+                    </ul>
 
-            </div>
-        </div>
+                </div>
+            </div>*@
         <!--end color switcher-->
 
     </div><!--End wrapper-->
@@ -260,6 +267,10 @@
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
 
+    @*<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>*@
+    <script type="text/javascript" src="https://cdn.datatables.net/searchpanes/2.0.1/js/dataTables.searchPanes.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
+
 
     @RenderSection("DataTableScripts", required: false)
 
@@ -267,7 +278,7 @@
     <script src="~/assets/plugins/simplebar/js/simplebar.js"></script>
     <!-- sidebar-menu js -->
     <script src="~/assets/js/sidebar-menu.js"></script>
-    <!-- loader scripts -->
+    @*loader scripts*@
     <script src="~/assets/js/jquery.loading-indicator.js"></script>
     <!-- Custom scripts -->
     <script src="~/assets/js/app-script.js"></script>
@@ -279,8 +290,9 @@
     <script src="~/assets/js/index.js"></script>
 
     <!-- Modal js -->
-    <script src="~/js/ModalSite.js"></script>
+    <script src="~/js/ModalSite.js" asp-append-version="true"></script>
 
+    @await RenderSectionAsync("Scripts", required: false)
 
 </body>
 </html>

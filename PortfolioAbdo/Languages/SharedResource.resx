@@ -183,6 +183,9 @@
   <data name="CreateNewRoles" xml:space="preserve">
     <value>Create New Roles</value>
   </data>
+  <data name="CV" xml:space="preserve">
+    <value>CV</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>
@@ -231,6 +234,15 @@
   <data name="EnterIntroduceYourSelf" xml:space="preserve">
     <value>Enter Introduce Your Self</value>
   </data>
+  <data name="EnterLinkfacebook" xml:space="preserve">
+    <value>Enter Link facebook</value>
+  </data>
+  <data name="EnterLinklinkedin" xml:space="preserve">
+    <value>Enter Link linkedin</value>
+  </data>
+  <data name="EnterLinktwitter" xml:space="preserve">
+    <value>Enter Link twitter</value>
+  </data>
   <data name="EnterYearsofExperience" xml:space="preserve">
     <value>Enter Years of Experience</value>
   </data>
@@ -266,6 +278,15 @@
   </data>
   <data name="JobTitle" xml:space="preserve">
     <value>Job Title</value>
+  </data>
+  <data name="Linkfacebook" xml:space="preserve">
+    <value>Link Facebook</value>
+  </data>
+  <data name="Linklinkedin" xml:space="preserve">
+    <value>Link Linkedin</value>
+  </data>
+  <data name="Linktwitter" xml:space="preserve">
+    <value>Link Twitter</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
@@ -344,6 +365,9 @@
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
+  </data>
+  <data name="SubmitPhoto" xml:space="preserve">
+    <value>Submit Photo</value>
   </data>
   <data name="TestimonialsTable" xml:space="preserve">
     <value>Testimonials Table</value>

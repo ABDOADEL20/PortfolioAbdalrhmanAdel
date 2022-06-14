@@ -12,11 +12,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="NToastNotify" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PortfolioAbdo.BL\PortfolioAbdo.BL.csproj" />
+    <ProjectReference Include="..\PortfolioAbdo.DAL\PortfolioAbdo.DAL.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -213,6 +223,10 @@
     <None Include="wwwroot\plugins\jquery-datatable\skin\bootstrap\images\Sorting icons.psd" />
     <None Include="wwwroot\plugins\jquery-datatable\skin\bootstrap\js\dataTables.bootstrap.js" />
     <None Include="wwwroot\plugins\jquery-datatable\skin\bootstrap\js\dataTables.bootstrap.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Dashboards\Controllers\NewFolder\" />
   </ItemGroup>
 
 </Project>

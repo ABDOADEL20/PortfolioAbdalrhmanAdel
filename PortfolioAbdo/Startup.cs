@@ -2,9 +2,16 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
+using NToastNotify;
+using PortfolioAbdo.BL.Interface;
+using PortfolioAbdo.BL.Mapper;
+using PortfolioAbdo.BL.Repository;
+using PortfolioAbdo.DAL.DataBase;
 using PortfolioAbdo.Languages;
 using System;
 using System.Collections.Generic;
@@ -26,18 +33,42 @@ namespace PortfolioAbdo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc().AddNToastNotifyToastr(new ToastrOptions()
+            {
+                ProgressBar = true,
+                PositionClass = ToastPositions.TopRight,
+                PreventDuplicates = true,
+                CloseButton = true
+            });
+
             services.AddControllersWithViews()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .AddDataAnnotationsLocalization(options =>
                 {
-                options.DataAnnotationLocalizerProvider = (type, factory) =>
-                factory.Create(typeof(SharedResource));
-                });
+                    options.DataAnnotationLocalizerProvider = (type, factory) =>
+                    factory.Create(typeof(SharedResource));
+                })
+                 .AddNewtonsoftJson(opt => {
+                     opt.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                 });
+
+            services.AddDbContextPool<PortfolioContext>(opts =>
+            opts.UseSqlServer(Configuration.GetConnectionString("PortfolioConnection")));
+
+            services.AddScoped<IHome, HomeRepository>();
+            services.AddScoped<ICategory_Portoflio, Category_PortoflioRepositroy>();
+            services.AddScoped<IPortfolio, PortfolioRepository>();
+
+
+            services.AddAutoMapper(x => x.AddProfile(new DomainProfile()));
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+           
             var supportedCultures = new[] {
                       new CultureInfo("ar-EG"),
                       new CultureInfo("en-US"),
@@ -70,6 +101,8 @@ namespace PortfolioAbdo
 
             app.UseAuthorization();
 
+            app.UseNToastNotify();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -82,8 +115,8 @@ namespace PortfolioAbdo
             {
                 endpoints.MapAreaControllerRoute(
                   name: "default",
-                  areaName: "Home",
-                  pattern: "{controller=Home}/{action=Index}/{id?}"
+                  areaName: "Dashboards",
+                  pattern: "{controller=Dashboard_Protoflio}/{action=Index}/{id?}"
                 );
             });
 

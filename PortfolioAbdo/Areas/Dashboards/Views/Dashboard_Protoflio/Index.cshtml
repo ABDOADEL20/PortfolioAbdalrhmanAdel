@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<PortfolioVm>
 @{
     ViewData["Title"] = "Dashboard Protoflio";
     Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
@@ -26,33 +26,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td><img src="~/img/portfolio/p-1.jpg" class="border-radius" width="50" height="50" style=" border-radius: 50%; "/></td>
-                                    <th scope="col">Store Management</th>
-                                    <th scope="col">Web Development</th>
-                                    <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("Details","Dashboard_Protoflio",new { Area = "Dashboards" },null,null)', '@SharedLocalizer["DetailsProtoflio"]')">@SharedLocalizer["Details"]</a></td>
-                                    <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("Update","Dashboard_Protoflio",new { Area = "Dashboards" },null,null)', '@SharedLocalizer["UpdateProtoflio"]')">@SharedLocalizer["Update"]</a></td>
-                                    <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("Delete","Dashboard_Protoflio",new { Area = "Dashboards" },null,null)', '@SharedLocalizer["DeleteProtoflio"]')">@SharedLocalizer["Delete"]</a></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td><img src="~/img/portfolio/p-1.jpg" class="border-radius" width="50" height="50" style=" border-radius: 50%; " /></td>
-                                    <th scope="col">Store Management</th>
-                                    <th scope="col">Web Development</th>
-                                    <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("Details","Dashboard_Protoflio",new { Area = "Dashboards" },null,null)','Details Protoflio')">Details</a></td>
-                                    <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("Update","Dashboard_Protoflio",new { Area = "Dashboards" },null,null)','Update Protoflio')">Update</a></td>
-                                    <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("Delete","Dashboard_Protoflio",new { Area = "Dashboards" },null,null)','Delete Protoflio')">Delete</a></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td><img src="~/img/portfolio/p-1.jpg" class="border-radius" width="50" height="50" style=" border-radius: 50%; " /></td>
-                                    <th scope="col">Store Management</th>
-                                    <th scope="col">Web Development</th>
-                                    <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("Details","Dashboard_Protoflio",new { Area = "Dashboards" },null,null)','Details Protoflio')">Details</a></td>
-                                    <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("Update","Dashboard_Protoflio",new { Area = "Dashboards" },null,null)','Update Protoflio')">Update</a></td>
-                                    <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("Delete","Dashboard_Protoflio",new { Area = "Dashboards" },null,null)','Delete Protoflio')">Delete</a></td>
-                                </tr>
+                                @if(Model != null)
+                                 {
+                                  @foreach (var item in Model)
+                                   {
+                                     <tr>
+                                       <th scope="row">@item.Id</th>
+                                       <td><img src="url(data:image\/*;base64,@(Convert.ToBase64String(item.Project_Photo)))" class="border-radius" width="50" height="50" style=" border-radius: 50%; "/></td>
+                                       <th scope="col">@item.Project_Name</th>
+                                       <th scope="col">@item.Project_Service</th>
+                                       <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("Details","Dashboard_Protoflio",new { Area = "Dashboards" ,id=item.Id },null,null)', '@SharedLocalizer["DetailsProtoflio"]')">@SharedLocalizer["Details"]</a></td>
+                                       <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("Update","Dashboard_Protoflio",new { Area = "Dashboards" ,id=item.Id },null,null)', '@SharedLocalizer["UpdateProtoflio"]')">@SharedLocalizer["Update"]</a></td>
+                                       <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("Delete","Dashboard_Protoflio",new { Area = "Dashboards" ,id=item.Id},null,null)', '@SharedLocalizer["DeleteProtoflio"]')">@SharedLocalizer["Delete"]</a></td>
+                                     </tr>
+                                   }
+                                 }
                             </tbody>
                         </table>
                     </div>
@@ -61,7 +49,7 @@
         </div>
     </div>
 </body>
-<div class="modal fade" tabindex="-1" role="dialog" id="form-modal">
+<div class="modal fade" tabindex="-1" role="form" id="form-modal">
     <div class="modal-dialog" role="form">
         <div class="modal-content" style="background-image: linear-gradient(45deg, #1565C0, #1E88E5); ">
             <div class="modal-header">
@@ -81,6 +69,12 @@
     <script>
         $(document).ready(function () {
             $('#example').DataTable({
+                dom: 'Plfrtip',
+                language: {
+                    searchPanes: {
+                        emptyPanes: 'There are no panes to display. :/'
+                    }
+                },
                 lengthMenu: [
                     [10, 25, 50, -1],
                     [10, 25, 50, 'All'],
