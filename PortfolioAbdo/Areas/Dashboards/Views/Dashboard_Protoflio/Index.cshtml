@@ -1,7 +1,8 @@
-﻿@model IEnumerable<PortfolioVm>
+﻿@model MultipleModels
 @{
     ViewData["Title"] = "Dashboard Protoflio";
     Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+    ViewBag.PageModelUser = Model.ApplicationUserVm;
 }
 
 <body>
@@ -26,21 +27,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(Model != null)
-                                 {
-                                  @foreach (var item in Model)
-                                   {
-                                     <tr>
-                                       <th scope="row">@item.Id</th>
-                                       <td><img src="url(data:image\/*;base64,@(Convert.ToBase64String(item.Project_Photo)))" class="border-radius" width="50" height="50" style=" border-radius: 50%; "/></td>
-                                       <th scope="col">@item.Project_Name</th>
-                                       <th scope="col">@item.Project_Service</th>
-                                       <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("Details","Dashboard_Protoflio",new { Area = "Dashboards" ,id=item.Id },null,null)', '@SharedLocalizer["DetailsProtoflio"]')">@SharedLocalizer["Details"]</a></td>
-                                       <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("Update","Dashboard_Protoflio",new { Area = "Dashboards" ,id=item.Id },null,null)', '@SharedLocalizer["UpdateProtoflio"]')">@SharedLocalizer["Update"]</a></td>
-                                       <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("Delete","Dashboard_Protoflio",new { Area = "Dashboards" ,id=item.Id},null,null)', '@SharedLocalizer["DeleteProtoflio"]')">@SharedLocalizer["Delete"]</a></td>
-                                     </tr>
-                                   }
-                                 }
+                                @if (Model != null)
+                                {
+                                    @foreach (var item in Model.PortfolioVmAll)
+                                    {
+                                        <tr>
+                                            <th scope="row">@item.Id</th>
+                                            <td><center><img src="~/PhotoFiles/@item.Project_Photo_Name" class="border-radius" width="50" height="50" style=" border-radius: 50%; " /></center></td>
+                                            <td>@item.Project_Name</td>
+                                            <td>@item.Category_Portoflio.Category_Name</td>
+                                            <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("Details","Dashboard_Protoflio",new { Area = "Dashboards" ,id=item.Id },null,null)', '@SharedLocalizer["DetailsProtoflio"]')">@SharedLocalizer["Details"]</a></td>
+                                            <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("Update","Dashboard_Protoflio",new { Area = "Dashboards" ,id=item.Id },null,null)', '@SharedLocalizer["UpdateProtoflio"]')">@SharedLocalizer["Update"]</a></td>
+                                            <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("Delete","Dashboard_Protoflio",new { Area = "Dashboards" ,id=item.Id},null,null)', '@SharedLocalizer["DeleteProtoflio"]')">@SharedLocalizer["Delete"]</a></td>
+                                        </tr>
+                                    }
+                                }
                             </tbody>
                         </table>
                     </div>

@@ -2,23 +2,22 @@
 @{
     Layout = null;
 }
-
+@await Component.InvokeAsync("NToastNotify")
 <div class="row">
     <div class="col-md-9">
-        <form asp-action="Create" asp-controller="Dashboard_Protoflio" asp-area="Dashboards" enctype="multipart/form-data" id="my-form" onsubmit="return jQueryAjaxPost(this);">
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        <form asp-action="Create" asp-controller="Dashboard_Protoflio" asp-area="Dashboards" method="post" id="Form" enctype="multipart/form-data" onsubmit="return jQueryAjaxPostFile(this);">
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Project_Name" class="control-label">@SharedLocalizer["ProjectName"]:</label>
                 <input asp-for="Project_Name" type="text" class="form-control" />
                 <span asp-validation-for="Project_Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="input-8" asp-for="Project_Photo">@SharedLocalizer["Photo"]</label>
-                <input type="file" asp-for="Project_Photo" class="form-control-file form-control-rounded" id="input-8" placeholder="@SharedLocalizer["EnterYourPhoto"]"  accept=".jpg,.png">
+                <label asp-for="Project_Photo">@SharedLocalizer["ProjectPhoto"]:</label>
+                <input type="file" asp-for="Project_Photo" class="form-control-file form-control-rounded" accept=".jpg,.png">
                 <span asp-validation-for="Project_Photo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Category_ProtoflioId" class="control-label">@SharedLocalizer["ProjectService"]:</label>
                 <select asp-for="Category_ProtoflioId" asp-items="(SelectList)ViewBag.catgportfolio" class="form-control">
                     <option></option>
                 </select>
@@ -50,3 +49,8 @@
         </form>
     </div>
 </div>
+
+@section MicrosoftValidation{
+    <script src="~/jquery-validate/jquery.validate.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}

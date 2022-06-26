@@ -1,9 +1,9 @@
-﻿
+﻿@inject SignInManager<PortfolioAbdo.DAL.Extend.ApplicationUser> signInManager
+@model MultipleModels
 @{
     Layout = null;
 }
-
-
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,40 +44,24 @@
         <!--Start topbar header-->
         <header class="topbar-nav">
             <nav class="navbar navbar-expand fixed-top">
-
-                <img src="~/img/Black_Elegant_and_Minimalist_Furniture_Logo__2_-removebg-preview.png" class="logo-icon" alt="logo icon">
-
-                <ul class="navbar-nav align-items-center right-nav-link" style=" padding-left:79em;">
-                    <li class="nav-item dropdown-lg">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" asp-area="Home" asp-controller="Home" asp-action="Index">
-                            <i class="fa fa-home"></i>
-                        </a>
+                <ul class="navbar-nav mr-auto align-items-center">
+                    <li class="nav-item">
+                        <div class="image">
+                            <img src="~/img/Black_Elegant_and_Minimalist_Furniture_Logo__2_-removebg-preview.png" class="logo-icon" alt="logo icon">
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
-                            <span class="user-profile"><img src="~/img/img_avatar1.png" class="img-circle" alt="user avatar"></span>
+                        <label class="label-info">
+                            Welcome to profile : @Model.ApplicationUserVm.UserName
+                        </label>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav align-items-center right-nav-link">
+                    <li class="nav-item dropdown-lg">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" asp-action="Index" asp-controller="Home" asp-area="Home">
+                            <i class="fa fa-home"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li class="dropdown-item user-details">
-                                <a href="javaScript:void();">
-                                    <div class="media">
-                                        <div class="avatar"><img class="align-self-start mr-3" src="~/img/img_avatar1.png" alt="user avatar"></div>
-                                        <div class="media-body">
-                                            <h6 class="mt-2 user-title">Sarajhon Mccoy</h6>
-                                            <p class="user-subtitle">mccoy@example.com</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="dropdown-divider"></li>
-                            <li class="dropdown-item"><i class="icon-envelope mr-2"></i> Inbox</li>
-                            <li class="dropdown-divider"></li>
-                            <li class="dropdown-item"><i class="icon-wallet mr-2"></i> Account</li>
-                            <li class="dropdown-divider"></li>
-                            <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
-                            <li class="dropdown-divider"></li>
-                            <li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li>
-                        </ul>
                     </li>
                 </ul>
             </nav>
@@ -93,14 +77,34 @@
                     <div class="col-lg-4">
                         <div class="card profile-card-2" style="margin-top:30px; padding-bottom:30px;">
                             <div class="card-body pt-5">
-                                <img src="~/img/img_avatar1.png" alt="profile-image" class="profile">
-                                <h4 class="card-title">Abdalrhman Adel</h4>
-                                <h6 class="card-title">@SharedLocalizer["JobTitle"]:</h6>
-                                <p class="card-text">.Net Developer</p>
-                                <h6 class="card-title">@SharedLocalizer["CompanyName"]:</h6>
-                                <p class="card-text">IT Company</p>
+                                @if (Model.ApplicationUserVm.PhotoUrl == null)
+                                {
+                                    <img src="~/img/img_avatar1.png" alt="profile-image" class="profile">
+                                }
+                                else
+                                {
+                                    <img src="~/PhotoFiles/PhotoProfile/@Model.ApplicationUserVm.PhotoUrl" alt="profile-image" class="profile">
+                                }
+                                @if (Model.ApplicationUserVm.Name == null)
+                                {
+                                    <h4 class="card-title">@Model.ApplicationUserVm.UserName</h4>
+                                }
+                                else
+                                {
+                                    <h4 class="card-title">@Model.ApplicationUserVm.Name</h4>
+                                }
+                                @if (Model.ApplicationUserVm.JobTitle != null)
+                                {
+                                    <h6 class="card-title">@SharedLocalizer["JobTitle"]:</h6>
+                                    <p class="card-text">@Model.ApplicationUserVm.JobTitle</p>
+                                }
+                                @if (Model.ApplicationUserVm.CompanyName != null)
+                                {
+                                    <h6 class="card-title">@SharedLocalizer["CompanyName"]:</h6>
+                                    <p class="card-text">IT Company</p>
+                                }
                                 <h6 class="card-title">@SharedLocalizer["Email"]:</h6>
-                                <p class="card-text">abdoadel5@gmail.com</p>
+                                <p class="card-text">@Model.ApplicationUserVm.Email</p>
                             </div>
                         </div>
                     </div>
@@ -130,68 +134,60 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <th scope="row">1</th>
-                                                        <td scope="col" style="overflow: hidden; text-overflow: ellipsis;">.Net Developer .Net Developer .Net Developer</td>
-                                                        <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("DetailsTestim","Profile",new { Area = "Identity" },null,null)', '@SharedLocalizer["DetailsTestimonials"]')">@SharedLocalizer["Details"]</a></td>
-                                                        <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("UpdateTestim","Profile",new { Area = "Identity" },null,null)', '@SharedLocalizer["UpdateTestimonials"]')">@SharedLocalizer["Update"]</a></td>
-                                                        <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("DeleteTestim","Profile",new { Area = "Identity" },null,null)', '@SharedLocalizer["DeleteTestimonials"]')">@SharedLocalizer["Delete"]</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">2</th>
-                                                        <td scope="col" style="overflow: hidden; text-overflow: ellipsis;">.Net Developer .Net Developer .Net Developer</th>
-                                                        <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("DetailsTestim","Profile",new { Area = "Identity" },null,null)','Details Testimonials')">Details</a></td>
-                                                        <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("UpdateTestim","Profile",new { Area = "Identity" },null,null)','Update Testimonials')">Update</a></td>
-                                                        <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("DeleteTestim","Profile",new { Area = "Identity" },null,null)','Delete Testimonials')">Delete</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">3</th>
-                                                        <td scope="col" style="overflow: hidden; text-overflow: ellipsis;">.Net Developer .Net Developer .Net Developer</th>
-                                                        <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("DetailsTestim","Profile",new { Area = "Identity" },null,null)','Details Testimonials')">Details</a></td>
-                                                        <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("UpdateTestim","Profile",new { Area = "Identity" },null,null)','Update Testimonials')">Update</a></td>
-                                                        <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("DeleteTestim","Profile",new { Area = "Identity" },null,null)','Delete Testimonials')">Delete</a></td>
-                                                    </tr>
+                                                    @foreach (var item in Model.TestimonialsVmAll)
+                                                    {
+                                                        <tr>
+                                                            <th scope="row">@item.Id</th>
+                                                            <td scope="col" style="overflow: hidden; text-overflow: ellipsis;">@item.Message</td>
+                                                            <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("DetailsTestim","Profile",new { Area = "Identity",id=item.Id },null,null)', '@SharedLocalizer["DetailsTestimonials"]')">@SharedLocalizer["Details"]</a></td>
+                                                            <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("UpdateTestim","Profile",new { Area = "Identity",id=item.Id },null,null)', '@SharedLocalizer["UpdateTestimonials"]')">@SharedLocalizer["Update"]</a></td>
+                                                            <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("DeleteTestim","Profile",new { Area = "Identity",id=item.Id },null,null)', '@SharedLocalizer["DeleteTestimonials"]')">@SharedLocalizer["Delete"]</a></td>
+                                                        </tr>
+                                                    }
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="edit">
-                                        <form>
+                                        <form asp-action="EditOrCreateInformation" asp-controller="Profile" asp-area="Identity" method="post" enctype="multipart/form-data">
+                                            <input type="hidden" asp-for="@Model.ApplicationUserVm.Id" />
+                                            <div asp-validation-summary="All" class="text-danger"></div>
                                             <div class="form-group row">
                                                 <label class="col-lg-3 col-form-label form-control-label">@SharedLocalizer["Name"]</label>
                                                 <div class="col-lg-9">
-                                                    <input class="form-control" type="text" value="Mark">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-3 col-form-label form-control-label">@SharedLocalizer["Email"]</label>
-                                                <div class="col-lg-9">
-                                                    <input class="form-control" type="email" value="mark@example.com">
+                                                    @if (Model.ApplicationUserVm.Name == null)
+                                                    {
+                                                        <input class="form-control" type="text" asp-for="@Model.ApplicationUserVm.Name" value="@Model.ApplicationUserVm.UserName"/>
+                                                    }
+                                                    else
+                                                    {
+                                                        <input class="form-control" type="text" asp-for="@Model.ApplicationUserVm.Name"/>
+                                                    }
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-3 col-form-label form-control-label">@SharedLocalizer["Changeprofilephoto"]</label>
                                                 <div class="col-lg-9">
-                                                    <input class="form-control" type="file">
+                                                    <input class="form-control" asp-for="@Model.ApplicationUserVm.Photo" type="file">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-3 col-form-label form-control-label">@SharedLocalizer["JobTitle"]</label>
                                                 <div class="col-lg-9">
-                                                    <input class="form-control" type="text" value="" placeholder="Job Title">
+                                                    <input class="form-control" type="text" asp-for="@Model.ApplicationUserVm.JobTitle" placeholder="Job Title">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-3 col-form-label form-control-label">@SharedLocalizer["CompanyName"]</label>
                                                 <div class="col-lg-9">
-                                                    <input class="form-control" type="text" value="" placeholder="Company Name">
+                                                    <input class="form-control" type="text" asp-for="@Model.ApplicationUserVm.CompanyName" placeholder="Company Name">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-3 col-form-label form-control-label"></label>
                                                 <div class="col-lg-9">
                                                     <input type="reset" class="btn btn-secondary" value="Cancel">
-                                                    <input type="button" class="btn btn-primary" value=@SharedLocalizer["SaveChanges"]>
+                                                    <input type="submit" class="btn btn-primary" value=@SharedLocalizer["SaveChanges"]>
                                                 </div>
                                             </div>
                                         </form>
@@ -223,43 +219,6 @@
             </div>
         </footer>
         <!--End footer-->
-        <!--start color switcher-->
-        <div class="right-sidebar">
-            <div class="switcher-icon">
-                <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
-            </div>
-            <div class="right-sidebar-content">
-
-                <p class="mb-0">Gaussion Texture</p>
-                <hr>
-
-                <ul class="switcher">
-                    <li id="theme1"></li>
-                    <li id="theme2"></li>
-                    <li id="theme3"></li>
-                    <li id="theme4"></li>
-                    <li id="theme5"></li>
-                    <li id="theme6"></li>
-                </ul>
-
-                <p class="mb-0">Gradient Background</p>
-                <hr>
-
-                <ul class="switcher">
-                    <li id="theme7"></li>
-                    <li id="theme8"></li>
-                    <li id="theme9"></li>
-                    <li id="theme10"></li>
-                    <li id="theme11"></li>
-                    <li id="theme12"></li>
-                    <li id="theme13"></li>
-                    <li id="theme14"></li>
-                    <li id="theme15"></li>
-                </ul>
-
-            </div>
-        </div>
-        <!--end color switcher-->
 
     </div><!--End wrapper-->
     <!-- Bootstrap core JavaScript-->
@@ -277,6 +236,7 @@
 
     <!-- Modal js -->
     <script src="~/js/ModalSite.js"></script>
+    @await Component.InvokeAsync("NToastNotify")
 </body>
 </html>
 <div class="modal fade" tabindex="-1" role="dialog" id="form-modal">

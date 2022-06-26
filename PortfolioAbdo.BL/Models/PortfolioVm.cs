@@ -1,4 +1,5 @@
-﻿using PortfolioAbdo.DAL.Entity;
+﻿using Microsoft.AspNetCore.Http;
+using PortfolioAbdo.DAL.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,14 +16,12 @@ namespace PortfolioAbdo.BL.Models
         [Required(ErrorMessage = "* Project Name Required")]
         public string Project_Name { get; set; }
 
-        [Required(ErrorMessage = "* Project Photo Required")]
-        public byte[] Project_Photo { get; set; }
+        public string Project_Photo_Name { get; set; }
+
+        public IFormFile Project_Photo { get; set; }
 
         [Required(ErrorMessage = "* Project Description Required")]
         public string Project_Description { get; set; }
-
-        [Required(ErrorMessage = "* Project Service Required")]
-        public string Project_Service { get; set; }
 
         [Required(ErrorMessage = "* Project Client Required")]
         public string Project_Client { get; set; }
@@ -35,6 +34,7 @@ namespace PortfolioAbdo.BL.Models
 
         [Required(ErrorMessage = "* Category Protoflio Required")]
         public int Category_ProtoflioId { get; set; }
+
         public Category_Portoflio Category_Portoflio { get; set; }
 
         public bool Is_Deleted { get; set; }

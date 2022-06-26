@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,7 +13,8 @@ namespace PortfolioAbdo.BL.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "* Image file Required")]
-        [Display(Name = "Select Image")]
-        public byte[] Image { get; set; }
+        public IFormFile Image { get; set; }
+
+        public string ImageName { get; set; }
     }
 }

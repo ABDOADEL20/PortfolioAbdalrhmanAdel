@@ -27,7 +27,7 @@ namespace PortfolioAbdo.BL.Repository
 
         public Portfolio GetByID(int id)
         {
-            var data = db.Portfolio.Where(a => a.Id == id).FirstOrDefault();
+            var data = db.Portfolio.Include("Category_Portoflio").Where(a => a.Id == id).FirstOrDefault();
             return data;
         }
 
@@ -55,7 +55,7 @@ namespace PortfolioAbdo.BL.Repository
 
         private IQueryable<Portfolio> GetInformations()
         {
-            return db.Portfolio.Select(a => a);
+            return db.Portfolio.Include("Category_Portoflio").Select(a => a);
         }
     }
 }

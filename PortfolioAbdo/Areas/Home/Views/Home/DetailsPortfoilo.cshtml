@@ -1,0 +1,49 @@
+﻿@model PortfolioVm
+@{
+    Layout = null;
+}
+
+<input type="hidden" asp-for="Id" />
+<div class="title-bar">
+    <div class="col-md-12">
+        <h2 class="text-center">Our Project</h2>
+        <div class="heading-border"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6" style="display: flex;">
+        <img class="img-fluid img-centered" style="display: flex;" src="~/PhotoFiles/@Model.Project_Photo_Name" alt="">
+    </div>
+    <div class="col-md-6" style="padding-left:10px;">
+        <p>@Model.Project_Description</p>
+        <ul class="list-inline item-details">
+            <li>
+                Client:
+                <strong>
+                    <a href="#">@Model.Project_Client</a>
+                </strong>
+            </li>
+            <li>
+                Date:
+                <strong>
+                    <a href="#">@Model.Project_Date.ToString("dd/MM/yyyy")</a>
+                </strong>
+            </li>
+            <li>
+                Service:
+                <strong>
+                    <a href="#">@Model.Category_Portoflio.Category_Name</a>
+                </strong>
+            </li>
+            <li>
+                Github Link:
+                <strong  style="display: flex;">
+                    <a href="@Model.Project_GitHub">@Model.Project_GitHub</a>
+                </strong>
+            </li>
+        </ul>
+        <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
+            <i class="fa fa-times"></i> Close
+        </button>
+    </div>
+</div>

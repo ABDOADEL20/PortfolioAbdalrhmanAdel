@@ -1,7 +1,8 @@
-﻿@model IEnumerable<Category_PortoflioVm>
+﻿@model MultipleModels
 @{
     ViewData["Title"] = SharedLocalizer["CategoryProtoflio"];
     Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+    ViewBag.PageModelUser = Model.ApplicationUserVm;
 }
 
 <body id="viewAll">
@@ -26,7 +27,7 @@
                             <tbody>
                                 @if (Model != null)
                                 {
-                                    @foreach (var item in Model)
+                                    @foreach (var item in Model.Category_PortoflioVmAll)
                                     {
                                        @if (item.Is_Deleted == false) 
                                         { 

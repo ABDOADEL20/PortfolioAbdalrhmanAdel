@@ -1,16 +1,21 @@
-﻿
+﻿@model TestimonialsVm
 @{
     Layout = null;
 }
 
 <div class="row">
     <div class="col-md-9">
-        <form asp-action="Update" enctype="multipart/form-data">
+        <form asp-action="DeleteTestim" asp-controller="Profile" asp-area="Identity" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Name" />
+            <input type="hidden" asp-for="Email" />
+            <input type="hidden" asp-for="JobTitle" />
+            <input type="hidden" asp-for="ApplicationUserId" />
+
             @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
             <div class="form-group">
                 <label class="control-label">@SharedLocalizer["YourMessage"]:</label>
-                <textarea name="YourMessage" readonly placeholder="Your Message" id="message" rows="8" class="shadow form-control form-control-lg"></textarea>
-                @*<span asp-validation-for="BeneficiaryName" class="text-danger"></span>*@
+                <textarea asp-for="Message" readonly placeholder="Your Message" id="message" rows="8" class="shadow form-control form-control-lg"></textarea>
             </div>
             <div class="form-group">
                 <input type="submit" value=@SharedLocalizer["Delete"] class="btn btn-danger" />

@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = SharedLocalizer["AbdalrhmanAdelPortfolio|ConfirmEmail"];
+    Layout = "~/Views/Shared/_LayoutIdentity.cshtml";
+}
+
+<!DOCTYPE html>
+<body class="bg-theme bg-theme1">
+    <div class="height-100v d-flex align-items-center justify-content-center">
+        <div class="card card-authentication1 mb-0">
+            <div class="card-body">
+                <div class="card-content p-2">
+                    <div class="card-title text-uppercase pb-2"> Confirm Email</div>
+                    <p class="pb-2">
+                        Thank you for confirming your email
+                    </p>
+                </div>
+            </div>
+            <div class="card-footer text-center py-3">
+                <p class="text-warning mb-0">Return to the <a asp-area="Identity" asp-controller="Account" asp-action="Login">@SharedLocalizer["SignIn"]</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+

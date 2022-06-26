@@ -1,29 +1,27 @@
-﻿
+﻿@model IdentityRole
+
 @{
     Layout = null;
 }
 
 <div class="row">
     <div class="col-md-9">
-        <form asp-action="Create">
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        <form asp-action="Edit" asp-controller="Roles" asp-area="Dashboards" method="post">
             <div class="form-group">
-                <label class="control-label">@SharedLocalizer["ID:"]</label>
-                <input type="text" readonly class="form-control" />
-                @*<span asp-validation-for="AccountNumber" class="text-danger"></span>*@
+                <label asp-for="Id" class="control-label">@SharedLocalizer["ID:"]</label>
+                <input asp-for="Id"  type="text" readonly class="form-control" />
             </div>
             <div class="form-group">
-                <label class="control-label">@SharedLocalizer["Name"]:</label>
-                <input type="text" class="form-control" />
-                @*<span asp-validation-for="BeneficiaryName" class="text-danger"></span>*@
+                <label asp-for="Name" class="control-label">@SharedLocalizer["Name"]:</label>
+                <input asp-for="Name" type="text" class="form-control" />
             </div>
             <div class="form-group">
                 <input type="submit" value=@SharedLocalizer["Update"] class="btn btn-primary" />
             </div>
         </form>
-        <a @*asp-area="Users" asp-controller="Roles" asp-action="AddOrRemoveUsers" asp-route-RoleId="@Model.Id"*@ class="btn btn-warning btn-block" onclick="showInPopup('@Url.Action("AddOrRemoveUsers","Roles",new { Area = "Dashboards" },null,null)', '@SharedLocalizer["AddOrRemoveUsers"]')">@SharedLocalizer["AddOrRemoveUsersWithRole"]</a>
+        <a class="btn btn-warning btn-block" onclick="showInPopup('@Url.Action("AddOrRemoveUsers","Roles",new { Area = "Dashboards",RoleId=Model.Id },null,null)', '@SharedLocalizer["AddOrRemoveUsers"]')">@SharedLocalizer["AddOrRemoveUsersWithRole"]</a>
     </div>
-</div> 
+</div>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="form-modal">
     <div class="modal-dialog" role="form">

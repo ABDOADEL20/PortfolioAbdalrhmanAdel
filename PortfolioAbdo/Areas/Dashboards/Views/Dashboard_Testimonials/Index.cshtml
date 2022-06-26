@@ -1,7 +1,8 @@
-﻿
+﻿@model MultipleModels
 @{
     ViewData["Title"] = SharedLocalizer["DashboardTestimonials"];
     Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+    ViewBag.PageModelUser = Model.ApplicationUserVm;
 }
 
 <body>
@@ -22,41 +23,29 @@
                                     <th scope="col">@SharedLocalizer["JobTitle"]</th>
                                     <th scope="col">@SharedLocalizer["UserID"]</th>
                                     <th scope="col">@SharedLocalizer["Details"]</th>
-                                    <th scope="col">@SharedLocalizer["Update"]</th>
                                     <th scope="col">@SharedLocalizer["Delete"]</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach (var item in Model.TestimonialsVmAll)
+                                {
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td><img src="~/img/portfolio/p-1.jpg" class="img-circle" width="50" height="50" style=" border-radius: 50%; " /></td>
-                                    <th scope="col">Abdo Adel</th>
-                                    <th scope="col">.Net Developer</th>
-                                    <th scope="col">11</th>
-                                    <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("Details","Dashboard_Testimonials",new { Area = "Dashboards" },null,null)', '@SharedLocalizer["DetailsTestimonials"]')">@SharedLocalizer["Details"]</a></td>
-                                    <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("Update","Dashboard_Testimonials",new { Area = "Dashboards" },null,null)', '@SharedLocalizer["UpdateTestimonials"]')">@SharedLocalizer["Update"]</a></td>
-                                    <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("Delete","Dashboard_Testimonials",new { Area = "Dashboards" },null,null)', '@SharedLocalizer["DeleteTestimonials"]')">@SharedLocalizer["Delete"]</a></td>
+                                    <th scope="row">@item.Id</th>
+                                    @if (item.Photo != null)
+                                    {
+                                        <td><img src="~/PhotoFiles/PhotoProfile/@item.Photo" class="img-circle" width="50" height="50" style=" border-radius: 50%; " /></td>
+                                    }
+                                    else
+                                    {
+                                        <td><img src="~/img/img_avatar1.png" class="img-circle" width="50" height="50" style=" border-radius: 50%; " /></td>
+                                    }
+                                    <th scope="col">@item.Name</th>
+                                    <th scope="col">@item.JobTitle</th>
+                                    <th scope="col">@item.ApplicationUserId</th>
+                                    <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("Details","Dashboard_Testimonials",new { Area = "Dashboards",id=item.Id },null,null)', '@SharedLocalizer["DetailsTestimonials"]')">@SharedLocalizer["Details"]</a></td>
+                                    <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("Delete","Dashboard_Testimonials",new { Area = "Dashboards",id=item.Id },null,null)', '@SharedLocalizer["DeleteTestimonials"]')">@SharedLocalizer["Delete"]</a></td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td><img src="~/img/portfolio/p-1.jpg" class="img-circle" width="50" height="50" style=" border-radius: 50%; " /></td>
-                                    <th scope="col">Abdo Adel</th>
-                                    <th scope="col">.Net Developer</th>
-                                    <th scope="col">11</th>
-                                    <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("Details","Dashboard_Testimonials",new { Area = "Dashboards" },null,null)','Details Testimonials')">Details</a></td>
-                                    <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("Update","Dashboard_Testimonials",new { Area = "Dashboards" },null,null)','Update Testimonials')">Update</a></td>
-                                    <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("Delete","Dashboard_Testimonials",new { Area = "Dashboards" },null,null)','Delete Testimonials')">Delete</a></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td><img src="~/img/portfolio/p-1.jpg" class="img-circle" width="50" height="50" style=" border-radius: 50%; " /></td>
-                                    <th scope="col">Abdo Adel</th>
-                                    <th scope="col">.Net Developer</th>
-                                    <th scope="col">11</th>
-                                    <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("Details","Dashboard_Testimonials",new { Area = "Dashboards" },null,null)','Details Testimonials')">Details</a></td>
-                                    <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("Update","Dashboard_Testimonials",new { Area = "Dashboards" },null,null)','Update Testimonials')">Update</a></td>
-                                    <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("Delete","Dashboard_Testimonials",new { Area = "Dashboards" },null,null)','Delete Testimonials')">Delete</a></td>
-                                </tr>
+                                }
                             </tbody>
                         </table>
                     </div>

@@ -30,7 +30,6 @@ jQueryAjaxPost = form => {
             type: 'POST',
             url: form.action,
             data: new FormData(form),
-            enctype: 'multipart/form-data',
             contentType: false,
             processData: false,
             success: function (res) {
@@ -53,6 +52,46 @@ jQueryAjaxPost = form => {
         console.log(ex)
     }
 }
+
+jQueryAjaxPostFile = form => {
+    var url = $(form).attr("action");
+    var fdata = new FormData(form);
+    var fileInput = $('#Project_Photo')[0];
+    var file = fileInput.files[0];
+  
+    fdata.append("Project_Photo", file);
+   
+    $("form input[type='text']").each(function (x, y) {
+        fdata.append($(y).attr("name"), $(y).val());
+    });
+    try {
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: fdata,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                if (res.isValid) {
+                   window.location.replace(res.newUrl);
+                   $('#form-modal .modal-body').html('');
+                   $('#form-modal .modal-title').html('');
+                   $('#form-modal').modal('hide');
+                }
+                else
+                   $('#form-modal .modal-body').html(res.html);
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+        //to prevent default form submit event
+        return false;
+    } catch (ex) {
+        console.log(ex)
+    }
+}
+
 
 function ShowImagePreview(imageUploader, previewImage) {
     if (imageUploader.files && imageUploader.files[0]) {

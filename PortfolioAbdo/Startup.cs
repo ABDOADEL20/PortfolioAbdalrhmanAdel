@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +14,7 @@ using PortfolioAbdo.BL.Interface;
 using PortfolioAbdo.BL.Mapper;
 using PortfolioAbdo.BL.Repository;
 using PortfolioAbdo.DAL.DataBase;
+using PortfolioAbdo.DAL.Extend;
 using PortfolioAbdo.Languages;
 using System;
 using System.Collections.Generic;
@@ -55,14 +58,50 @@ namespace PortfolioAbdo
             services.AddDbContextPool<PortfolioContext>(opts =>
             opts.UseSqlServer(Configuration.GetConnectionString("PortfolioConnection")));
 
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.ClientId = "659381666869-n1ulav8h66ckfib7eqv3voeim8bs373u.apps.googleusercontent.com";
+                    options.ClientSecret = "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";
+                })
+                .AddFacebook(options =>
+                {
+                    options.AppId = "570149051173955";
+                    options.AppSecret = "4f37dfebd63ecd9cec51a5bc79f3e760";
+                });
+
             services.AddScoped<IHome, HomeRepository>();
             services.AddScoped<ICategory_Portoflio, Category_PortoflioRepositroy>();
             services.AddScoped<IPortfolio, PortfolioRepository>();
+            services.AddScoped<IExpCompaniesPhoto, ExpCompaniesPhotoRepository>();
+            services.AddScoped<IApplicationUser, ApplicationUserRepository>();
+            services.AddScoped<ITestimonials, TestimonialsRepository>();
 
 
             services.AddAutoMapper(x => x.AddProfile(new DomainProfile()));
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+            {
+             options.LoginPath = "/Identity/Account/Login";
+             options.AccessDeniedPath = "/Identity/Account/Login";
+            });
 
-            
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                // Default Password settings.
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 0;
+                options.SignIn.RequireConfirmedEmail = true;
+            }).AddEntityFrameworkStores<PortfolioContext>()
+             .AddDefaultTokenProviders()
+             .AddDefaultUI()
+             .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -99,10 +138,11 @@ namespace PortfolioAbdo
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseNToastNotify();
-
+        
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -115,8 +155,8 @@ namespace PortfolioAbdo
             {
                 endpoints.MapAreaControllerRoute(
                   name: "default",
-                  areaName: "Dashboards",
-                  pattern: "{controller=Dashboard_Protoflio}/{action=Index}/{id?}"
+                  areaName: "Home",
+                  pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
             });
 

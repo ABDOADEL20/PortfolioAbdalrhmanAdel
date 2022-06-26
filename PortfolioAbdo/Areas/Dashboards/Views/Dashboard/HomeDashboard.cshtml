@@ -1,7 +1,9 @@
-﻿@model HomeVm
+﻿@inject SignInManager<PortfolioAbdo.DAL.Extend.ApplicationUser> signInManager
+@model MultipleModels
 @{
     ViewData["Title"] = SharedLocalizer["HomeDashboard"];
     Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+    ViewBag.PageModelUser = Model.ApplicationUserVm;
 }
 <div style="position:center">
     <div class="row mt-3">
@@ -13,46 +15,46 @@
                     </center>
                     <hr>
                     <form asp-action="CreateOrEditInformation" asp-controller="Dashboard" asp-area="Dashboards" method="post" class="form-group" enctype="multipart/form-data">
-                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="@Model.HomeVm.Id" />
                         <div class="form-group">
                             <label for="input-6">@SharedLocalizer["BannerName"]</label>
-                            <input type="text" class="form-control form-control-rounded" asp-for="Banner_Name" id="input-6" placeholder="@SharedLocalizer["EnterBannerName"]">
-                            <span asp-validation-for="Banner_Name" class="text-danger"></span>
+                            <input type="text" class="form-control form-control-rounded" asp-for="@Model.HomeVm.Banner_Name" id="input-6" placeholder="@SharedLocalizer["EnterBannerName"]">
+                            <span asp-validation-for="@Model.HomeVm.Banner_Name" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="input-7">@SharedLocalizer["BannerJobTitle"]</label>
-                            <input type="text" class="form-control form-control-rounded" asp-for="Banner_Job_Title" id="input-7" placeholder="@SharedLocalizer["EnterYourBannerJobTitle"]">
-                            <span asp-validation-for="Banner_Job_Title" class="text-danger"></span>
+                            <input type="text" class="form-control form-control-rounded" asp-for="@Model.HomeVm.Banner_Job_Title" id="input-7" placeholder="@SharedLocalizer["EnterYourBannerJobTitle"]">
+                            <span asp-validation-for="@Model.HomeVm.Banner_Job_Title" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="input-10">@SharedLocalizer["YearsofExperience"]</label>
-                            <input type="text" class="form-control form-control-rounded" asp-for="Years_Of_Experience" id="input-10" placeholder="@SharedLocalizer["EnterYearsofExperience"]">
-                            <span asp-validation-for="Years_Of_Experience" class="text-danger"></span>
+                            <input type="text" class="form-control form-control-rounded" asp-for="@Model.HomeVm.Years_Of_Experience" id="input-10" placeholder="@SharedLocalizer["EnterYearsofExperience"]">
+                            <span asp-validation-for="@Model.HomeVm.Years_Of_Experience" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="input-10">@SharedLocalizer["Linkfacebook"]</label>
-                            <input type="text" class="form-control form-control-rounded" asp-for="Link_facebook" id="input-10" placeholder="@SharedLocalizer["EnterLinkfacebook"]">
-                            <span asp-validation-for="Link_facebook" class="text-danger"></span>
+                            <input type="text" class="form-control form-control-rounded" asp-for="@Model.HomeVm.Link_facebook" id="input-10" placeholder="@SharedLocalizer["EnterLinkfacebook"]">
+                            <span asp-validation-for="@Model.HomeVm.Link_facebook" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="input-10">@SharedLocalizer["Linklinkedin"]</label>
-                            <input type="text" class="form-control form-control-rounded" asp-for="Link_linkedin" id="input-10" placeholder="@SharedLocalizer["EnterLinklinkedin"]">
-                            <span asp-validation-for="Link_linkedin" class="text-danger"></span>
+                            <input type="text" class="form-control form-control-rounded" asp-for="@Model.HomeVm.Link_linkedin" id="input-10" placeholder="@SharedLocalizer["EnterLinklinkedin"]">
+                            <span asp-validation-for="@Model.HomeVm.Link_linkedin" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="input-10">@SharedLocalizer["Linktwitter"]</label>
-                            <input type="text" class="form-control form-control-rounded" asp-for="Link_twitter" id="input-10" placeholder="@SharedLocalizer["EnterLinktwitter"]">
-                            <span asp-validation-for="Link_twitter" class="text-danger"></span>
+                            <input type="text" class="form-control form-control-rounded" asp-for="@Model.HomeVm.Link_twitter" id="input-10" placeholder="@SharedLocalizer["EnterLinktwitter"]">
+                            <span asp-validation-for="@Model.HomeVm.Link_twitter" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="input-9">@SharedLocalizer["IntroduceYourSelf"]</label>
-                            <textarea class="form-control form-control-rounded" asp-for="Introduce_your_self" id="input-9" maxlength="2500" rows="4" placeholder="@SharedLocalizer["EnterIntroduceYourSelf"]"></textarea>
-                            <span asp-validation-for="Introduce_your_self" class="text-danger"></span>
+                            <textarea class="form-control form-control-rounded" asp-for="@Model.HomeVm.Introduce_your_self" id="input-9" maxlength="2500" rows="4" placeholder="@SharedLocalizer["EnterIntroduceYourSelf"]"></textarea>
+                            <span asp-validation-for="@Model.HomeVm.Introduce_your_self" class="text-danger"></span>
                         </div>
                         <div class="custom-file">
-                            <label for="input-8" asp-for="Cv">@SharedLocalizer["CV"]</label>
-                            <input type="file" asp-for="Cv" class="form-control-file form-control-rounded" id="input-8" placeholder="@SharedLocalizer["EnterYourCV"]" accept=".pdf">
-                            <span asp-validation-for="Cv" class="text-danger"></span>
+                            <label for="input-8" asp-for="@Model.HomeVm.Cv">@SharedLocalizer["CV"]</label>
+                            <input type="file" asp-for="@Model.HomeVm.Cv" class="form-control-file form-control-rounded" id="input-8" placeholder="@SharedLocalizer["EnterYourCV"]" accept=".pdf">
+                            <span asp-validation-for="@Model.HomeVm.Cv" class="text-danger"></span>
                         </div>
                         <center>
                             <div class="form-group">
@@ -62,57 +64,41 @@
                     </form>
                     <hr />
                     <!--================ Srart LogoExp Area =================-->
-                    <form class="form-group" enctype="multipart/form-data">
+                    <form asp-action="SetPhotoExp" asp-controller="Dashboard" asp-area="Dashboards" method="post" class="form-group" enctype="multipart/form-data">
                         <div class="row row-cols-3 justify-content-between">
                             <div class="form-group w-50">
                                 <label for="input-10">@SharedLocalizer["ExperienceCompaniesPhoto"]</label>
-                                <input type="file" class="form-control-file form-control-rounded" id="input-10" placeholder="@SharedLocalizer["EnterExperienceCompaniesPhoto"]">
+                                <input type="file" asp-for="@Model.ExpCompaniesPhotoVmModel.Image" class="form-control-file form-control-rounded" placeholder="@SharedLocalizer["EnterExperienceCompaniesPhoto"]">
+                                <span asp-validation-for="@Model.ExpCompaniesPhotoVmModel.Image" class="text-danger"></span>
                             </div>
-                            @*<div id="poster-container" class="@(Model.Id > 0 ? string.Empty :"d-none")">
-                                    <img src="@(Model.Id > 0 ? $"data:image/*;base64,{Convert.ToBase64String(Model.Poster)}" : string.Empty)" alt="Poster" class="img-thumbnail" />
-                                </div>*@
                             <button type="submit" style="float:right;" class="btn btn-light btn-round px-5"><i class="icon-plus"></i>@SharedLocalizer["SubmitPhoto"]</button>
                         </div>
                     </form>
                     <div class="row row-cols-1 row-cols-md-3">
-                        <div class="col mb-4">
-                            <div class="card h-100">
-                                <img src="~/img/img_avatar1.png" class="card-img-top" alt="~/img/img_avatar1.png">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card h-100">
-                                <img src="~/img/img_avatar1.png" class="card-img-top" alt="~/img/img_avatar1.png">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a short card.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card h-100">
-                                <img src="~/img/img_avatar1.png" class="card-img-top" alt="~/img/img_avatar1.png">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-4">
-                            <div class="card h-100">
-                                <img src="~/img/img_avatar1.png" class="card-img-top" alt="~/img/img_avatar1.png">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        @if (!Model.ExpCompaniesPhotoVm.Any())
+                        {
 
+                            <center><label>No photo found!</label></center>
+
+                        }
+                        else
+                        {
+                            @foreach (var item in Model.ExpCompaniesPhotoVm)
+                            {
+                                <div class="col mb-4">
+                                    <div class="card h-100">
+                                        <img src="~/PhotoFiles/PhotoExp/@item.ImageName" class="card-img-top" alt="~/img/img_avatar1.png">
+                                        <div class="card-body">
+                                            <form asp-action="DeletePhotoExp" asp-controller="Dashboard" asp-area="Dashboards" asp-route-id="@item.Id" method="post">
+                                                <input type="hidden" asp-for="@item.Id" />
+                                                <center><input type="submit" value="Delete" class="btn btn-danger" /></center>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
                     <!--================ End LogoExp Area =================-->
                 </div>
             </div>

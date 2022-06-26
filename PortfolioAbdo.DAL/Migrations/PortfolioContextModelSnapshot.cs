@@ -175,15 +175,15 @@ namespace PortfolioAbdo.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("ExpCompaniesPhoto");
                 });
 
-            modelBuilder.Entity("PortfolioAbdo.DAL.Entity.Home", b =>
+            modelBuilder.Entity("PortfolioAbdo.DAL.Entity.Homes", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -226,9 +226,6 @@ namespace PortfolioAbdo.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("Category_PortoflioId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Category_ProtoflioId")
                         .HasColumnType("int");
 
@@ -250,15 +247,12 @@ namespace PortfolioAbdo.DAL.Migrations
                     b.Property<string>("Project_Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Project_Photo")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Project_Service")
+                    b.Property<string>("Project_Photo_Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Category_PortoflioId");
+                    b.HasIndex("Category_ProtoflioId");
 
                     b.ToTable("Portfolio");
                 });
@@ -291,8 +285,8 @@ namespace PortfolioAbdo.DAL.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -435,8 +429,10 @@ namespace PortfolioAbdo.DAL.Migrations
             modelBuilder.Entity("PortfolioAbdo.DAL.Entity.Portfolio", b =>
                 {
                     b.HasOne("PortfolioAbdo.DAL.Entity.Category_Portoflio", "Category_Portoflio")
-                        .WithMany()
-                        .HasForeignKey("Category_PortoflioId");
+                        .WithMany("Portfolio")
+                        .HasForeignKey("Category_ProtoflioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category_Portoflio");
                 });
@@ -448,6 +444,11 @@ namespace PortfolioAbdo.DAL.Migrations
                         .HasForeignKey("ApplicationUserId");
 
                     b.Navigation("applicationUser");
+                });
+
+            modelBuilder.Entity("PortfolioAbdo.DAL.Entity.Category_Portoflio", b =>
+                {
+                    b.Navigation("Portfolio");
                 });
 #pragma warning restore 612, 618
         }

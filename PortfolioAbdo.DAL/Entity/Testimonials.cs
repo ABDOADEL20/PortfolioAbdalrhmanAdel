@@ -16,7 +16,7 @@ namespace PortfolioAbdo.DAL.Entity
         public string Email { get; set; }
         public string JobTitle { get; set; }
         public string CompanyName { get; set; }
-        public byte[] Photo { get; set; }
+        public string Photo { get; set; }
         public string Message { get; set; }
 
         public string ApplicationUserId { get; set; }

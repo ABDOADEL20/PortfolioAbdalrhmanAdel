@@ -120,6 +120,9 @@
   <data name="AbdalrhmanAdelPortfolioConfirmForgetPassword" xml:space="preserve">
     <value>Abdalrhman Adel Portfolio | Confirm Forget Password</value>
   </data>
+  <data name="AbdalrhmanAdelPortfolio|ConfirmEmail" xml:space="preserve">
+    <value>Abdalrhman Adel Portfolio | Confirm Email</value>
+  </data>
   <data name="AbdalrhmanAdelPortfolio|ConfirmResetPassword" xml:space="preserve">
     <value>Abdalrhman Adel Portfolio | Confirm Reset Password</value>
   </data>
@@ -154,10 +157,10 @@
     <value>Banner Name</value>
   </data>
   <data name="CategoryProtoflio" xml:space="preserve">
-    <value>Category Protoflio</value>
+    <value>Category Portfolio</value>
   </data>
   <data name="CategoryProtoflioTable" xml:space="preserve">
-    <value>Category Protoflio Table</value>
+    <value>Category Portfolio Table</value>
   </data>
   <data name="Changeprofilephoto" xml:space="preserve">
     <value>Change profile photo</value>
@@ -178,7 +181,7 @@
     <value>Create New Item</value>
   </data>
   <data name="CreateNewItemInProtoflio" xml:space="preserve">
-    <value>Create New Item In Protoflio</value>
+    <value>Create New Item In Portfolio</value>
   </data>
   <data name="CreateNewRoles" xml:space="preserve">
     <value>Create New Roles</value>
@@ -199,7 +202,10 @@
     <value>Delete Project</value>
   </data>
   <data name="DeleteProtoflio" xml:space="preserve">
-    <value>Delete Protoflio</value>
+    <value>Delete Portfolio</value>
+  </data>
+  <data name="DeleteRole" xml:space="preserve">
+    <value>Delete Role</value>
   </data>
   <data name="DeleteUser" xml:space="preserve">
     <value>Delete User</value>
@@ -211,7 +217,7 @@
     <value>Details Project</value>
   </data>
   <data name="DetailsProtoflio" xml:space="preserve">
-    <value>Details Protoflio</value>
+    <value>Details Portfolio</value>
   </data>
   <data name="DetailsTestimonials" xml:space="preserve">
     <value>Details Testimonials</value>
@@ -312,6 +318,9 @@
   <data name="Pleaseenteryouremailaddress.Youwillreceivealinktocreateanewpasswordviaemail." xml:space="preserve">
     <value>Please enter your email address. You will receive a link to create a new password via email.</value>
   </data>
+  <data name="ProjectCategory" xml:space="preserve">
+    <value>Project Category</value>
+  </data>
   <data name="ProjectClient" xml:space="preserve">
     <value>Project Client</value>
   </data>
@@ -334,7 +343,7 @@
     <value>Project Service</value>
   </data>
   <data name="ProtoflioTable" xml:space="preserve">
-    <value>Protoflio Table</value>
+    <value>Portfolio Table</value>
   </data>
   <data name="ResetPassword" xml:space="preserve">
     <value>Reset Password</value>
@@ -380,6 +389,9 @@
   </data>
   <data name="UpdateProtoflio" xml:space="preserve">
     <value>Update Protoflio</value>
+  </data>
+  <data name="UpdateRole" xml:space="preserve">
+    <value>Update Role</value>
   </data>
   <data name="UpdateTestimonials" xml:space="preserve">
     <value>Update Testimonials</value>

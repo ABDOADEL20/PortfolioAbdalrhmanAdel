@@ -54,7 +54,7 @@ namespace PortfolioAbdo.BL.Repository
 
         private IQueryable<Category_Portoflio> GetInformations()
         {
-            return db.Category_Protoflio.Select(a => a);
+            return db.Category_Protoflio.Select(a => a).OrderBy(a => a.Category_Name);
         }
     }
 }

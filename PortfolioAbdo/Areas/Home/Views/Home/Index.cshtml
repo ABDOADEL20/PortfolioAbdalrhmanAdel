@@ -1,7 +1,10 @@
-﻿
+﻿@inject SignInManager<PortfolioAbdo.DAL.Extend.ApplicationUser> signInManager
+@model MultipleModels
 @{
     ViewData["Title"] = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.LinkSocial = Model.HomeVmAll;
+    ViewBag.PageModelUser = Model.ApplicationUserVm;
 }
 
 
@@ -10,59 +13,29 @@
 <body>
     <!--================ Start Home Banner Area =================-->
     <section class="home_banner_area" id="home">
-            <div class="banner_inner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <div class="banner_content">
-                                <h3 class="text-uppercase">Hell0</h3>
-                                <h1 class="text-uppercase">I am Abdalrhman Adel</h1>
-                                <h5 class="text-uppercase">Junior .Net Developer</h5>
-                                <div class="align-items-center">
-                                    <a class="primary_btn" href="#"><span>Hire Me</span></a>
-                                    <a class="primary_btn tr-bg" href="#"><span>Get CV</span></a>
-                                </div>
+        <div class="banner_inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="banner_content">
+                            <h3 class="text-uppercase">Hell0</h3>
+                            <h1 class="text-uppercase">I am @Model.HomeVmAll.FirstOrDefault().Banner_Name</h1>
+                            <h5 class="text-uppercase">@Model.HomeVmAll.FirstOrDefault().Banner_Job_Title</h5>
+                            <div class="align-items-center">
+                                <a class="primary_btn" href="#"><span>Hire Me</span></a>
+                                <a class="primary_btn tr-bg"asp-action="DownloadFile" asp-controller="Home" asp-area="Home"><span>Get CV</span></a>
                             </div>
                         </div>
-                        <div class="col-lg-5">
-                            <div class="home_right_img">
-                                <img class="" src="~/img/banner/home-right.png" alt="">
-                            </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="home_right_img">
+                            <img class="" src="~/img/banner/home-right.png" alt="">
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-    <!--<section id="home" class="intro-section">
-        <div class="container">
-            <div class="row align-items-center text-white">-->
-                <!-- START THE CONTENT FOR THE INTRO  -->
-                <!--<div class="col-md-6 intros text-start">
-                    <div class="banner_content">
-                        <h3 class="text-uppercase">Hello</h3>
-                    </div>
-                        <h1 class="display-2--intro text-uppercase">I am Abdalrhman Adel</h1>
-                        <h5 class="display-2--description">
-                            Junior .Net Developer
-                        </h5>
-
-                        <button type="button" class="rounded-pill btn-rounded">
-                            Get CV
-                            <span><i class="fas fa-arrow-right"></i></span>
-                        </button>
-                    </div>-->
-                    <!-- START THE CONTENT FOR THE VIDEO -->
-                    <!--<div class="col-md-6 intros text-end">
-                        <div class="video-box">
-                            <img src="~/img/banner/home-right.png" class="img-fluid">
-
-                        </div>
-                    </div>
-                </div>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,160L48,176C96,192,192,224,288,208C384,192,480,128,576,133.3C672,139,768,213,864,202.7C960,192,1056,96,1152,74.7C1248,53,1344,107,1392,133.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-    </section>-->
+    </section>
     <!--================ End Home Banner Area =================-->
     <!--================ Start About Us Area =================-->
     <section class="about_area section_gap" id="about">
@@ -82,14 +55,13 @@
                             myself
                         </h2>
                         <p>
-                            Whose given. Were gathered. There first subdue greater. Bearing you Whales heaven
-                            midst their. Beast creepeth. Fish days.
+                            @Model.HomeVmAll.FirstOrDefault().Introduce_your_self
                         </p>
-                        <p>
-                            Is give may shall likeness made yielding spirit a itself together created after sea
-                            is in beast beginning signs open god you're gathering whose gathered cattle let.
-                            Creature whales fruit unto meat the life beginning all in under give two.
-                        </p>
+                        @*<p>
+                                Is give may shall likeness made yielding spirit a itself together created after sea
+                                is in beast beginning signs open god you're gathering whose gathered cattle let.
+                                Creature whales fruit unto meat the life beginning all in under give two.
+                            </p>*@
                         <a class="primary_btn" asp-action="DownloadFile" asp-controller="Home" asp-area="Home"><span>Download CV</span></a>
                     </div>
                 </div>
@@ -97,81 +69,37 @@
         </div>
     </section>
     <!--================ End About Us Area =================-->
-    <!--================ Srart Brand Area =================-->
+    <!--================ Srart PhotoExp Area =================-->
     <section class="brand_area section_gap_bottom">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="single-brand-item d-table">
-                                <div class="d-table-cell text-center">
-                                    <img src="~/img/brands/logo1.png" alt="">
+                        @foreach (var item in Model.ExpCompaniesPhotoVm)
+                        {
+                            @if (!Model.ExpCompaniesPhotoVm.Any())
+                            {
+                                <div>
+                                    <center><label class="label-primary">No testimonials available</label></center>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="single-brand-item d-table">
-                                <div class="d-table-cell text-center">
-                                    <img src="~/img/brands/logo2.png" alt="">
+                            }
+                            else
+                            {
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="shadow p-3 mb-5 bg-white rounded d-table">
+                                        <div class="d-table-cell text-center">
+                                            <img style="margin: 0 auto; height:100px; width:100px;" src="~/PhotoFiles/PhotoExp/@item.ImageName" alt="">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="single-brand-item d-table">
-                                <div class="d-table-cell text-center">
-                                    <img src="~/img/brands/logo3.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="single-brand-item d-table">
-                                <div class="d-table-cell text-center">
-                                    <img src="~/img/brands/logo4.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="single-brand-item d-table">
-                                <div class="d-table-cell text-center">
-                                    <img src="~/img/brands/logo5.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="single-brand-item d-table">
-                                <div class="d-table-cell text-center">
-                                    <img src="~/img/brands/logo6.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="single-brand-item d-table">
-                                <div class="d-table-cell text-center">
-                                    <img src="~/img/brands/logo7.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="single-brand-item d-table">
-                                <div class="d-table-cell text-center">
-                                    <img src="~/img/brands/logo8.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="single-brand-item d-table">
-                                <div class="d-table-cell text-center">
-                                    <img src="~/img/brands/logo9.png" alt="">
-                                </div>
-                            </div>
-                        </div>
+                            }
+                        }
                     </div>
                 </div>
                 <div class="offset-lg-2 col-lg-4 col-md-6">
                     <div class="client-info">
                         <div class="d-flex mb-50">
-                            <span class="lage" style="">1</span>
+                            <span class="lage" style="">@Model.HomeVmAll.FirstOrDefault().Years_Of_Experience</span>
                             <span class="smll">Years Experience Working</span>
                         </div>
                         <div class="call-now d-flex">
@@ -188,7 +116,7 @@
             </div>
         </div>
     </section>
-    <!--================ End Brand Area =================-->
+    <!--================ End PhotoExp Area =================-->
     <!--================ Start Features Area =================-->
     <!--================ End Features Area =================-->
     <!--================Start Portfolio Area =================-->
@@ -199,105 +127,28 @@
                 <div class="mb-5 heading-border"></div>
             </div>
             <div class="col-md-12">
-                <div class="port-head-cont">
-                    <button class="btn btn-general btn-green filter-b" data-filter="all">All</button>
-                    <button class="btn btn-general btn-green filter-b" data-filter="consulting">Web Design</button>
-                    <button class="btn btn-general btn-green filter-b" data-filter="finance">Mobile Apps</button>
-                    <button class="btn btn-general btn-green filter-b" data-filter="marketing">Graphics Design</button>
+                <div class="port-head-cont" >
+                    @foreach (var item in Model.Category_PortoflioVmAll)
+                    {
+                            <button type="submit" class="btn btn-general btn-green filter-b " data-filter=@item.Category_Name>@item.Category_Name</button>
+                    }
                 </div>
             </div>
         </div>
         <div class="row my-auto">
-            <div class="col-sm-4 portfolio-item filter finance">
-                <a class="portfolio-link" href="#portfolioModal4" data-toggle="modal">
-                    <div class="caption-port">
-                        <div class="caption-port-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
+            @foreach (var item in Model.PortfolioVmAll)
+            {
+                <div class="col-sm-4 portfolio-item @item.Category_Portoflio.Category_Name">
+                    <a class="portfolio-link" onclick="showInPopup('@Url.Action("DetailsPortfoilo","Home",new { Area = "Home" ,id=item.Id },null,null)',null)" data-toggle="modal">
+                        <div class="caption-port">
+                            <div class="caption-port-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
                         </div>
-                    </div>
-                    <img class="img-fluid" src="~/img/portfolio/p-4.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-sm-4 portfolio-item filter marketing">
-                <a class="portfolio-link" href="#portfolioModal5" data-toggle="modal">
-                    <div class="caption-port">
-                        <div class="caption-port-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="~/img/portfolio/p-5.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-sm-4 portfolio-item filter consulting">
-                <a class="portfolio-link" href="#portfolioModal6" data-toggle="modal">
-                    <div class="caption-port">
-                        <div class="caption-port-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="~/img/portfolio/p-6.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-sm-4 portfolio-item filter consulting">
-                <a class="portfolio-link" href="#portfolioModal7" data-toggle="modal">
-                    <div class="caption-port">
-                        <div class="caption-port-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="~/img/portfolio/p-7.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-sm-4 portfolio-item filter consulting">
-                <a class="portfolio-link" href="#portfolioModal8" data-toggle="modal">
-                    <div class="caption-port">
-                        <div class="caption-port-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="~/img/portfolio/p-8.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-sm-4 portfolio-item filter finance">
-                <a class="portfolio-link" href="#portfolioModal9" data-toggle="modal">
-                    <div class="caption-port">
-                        <div class="caption-port-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="~/img/portfolio/p-9.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-sm-4 portfolio-item filter marketing">
-                <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal">
-                    <div class="caption-port">
-                        <div class="caption-port-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="~/img/portfolio/p-1.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-sm-4 portfolio-item filter marketing">
-                <a class="portfolio-link" href="#portfolioModal2" data-toggle="modal">
-                    <div class="caption-port">
-                        <div class="caption-port-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="~/img/portfolio/p-2.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-sm-4 portfolio-item filter finance">
-                <a class="portfolio-link" href="#portfolioModal3" data-toggle="modal">
-                    <div class="caption-port">
-                        <div class="caption-port-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="~/img/portfolio/p-3.jpg" alt="">
-                </a>
-            </div>
+                        <img class="img-fluid" src="~/PhotoFiles/@item.Project_Photo_Name" alt="">
+                    </a>
+                </div>
+            }
         </div>
     </section>
     <!--================End Portfolio Area =================-->
@@ -305,117 +156,158 @@
 
     <div class="gtco-testimonials" id="testimonials">
         <h2>Testimonials</h2>
-        <div class="owl-carousel owl-carousel1 owl-theme">
+        @if (!Model.TestimonialsVmAll.Any())
+        {
+
             <div>
-                <div class="card text-center">
-                    <img class="card-img-top" src="https://images.unsplash.com/photo-1572561300743-2dd367ed0c9a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=50&w=300" alt="">
-                    <div class="card-body">
-                        <h5>
-                            Ronne Galle <br />
-                            <span> Project Manager </span>
-                            <br />
-                            <span style="font-size:15px;">abdodel5@gmail.com</span>
-                        </h5>
-                        <p class="card-text">
-                            “ Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-                            impedit quo minus id quod maxime placeat ”
-                        </p>
-                    </div>
-                </div>
+                <center><label class="label-primary">No testimonials available</label></center>
             </div>
-            <div>
-                <div class="card text-center">
-                    <img class="card-img-top" src="https://images.unsplash.com/photo-1588361035994-295e21daa761?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=301&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=50&w=301" alt="">
-                    <div class="card-body">
-                        <h5>
-                            Missy Limana<br />
-                            <span> Engineer </span>
-                            <br />
-                            <span style="font-size:15px;">abdodel5@gmail.com</span>
-                        </h5>
-                        <p class="card-text">
-                            “ Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-                            impedit quo minus id quod maxime placeat ”
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="card text-center">
-                    <img class="card-img-top" src="https://images.unsplash.com/photo-1575377222312-dd1a63a51638?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=302&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=50&w=302" alt="">
-                    <div class="card-body">
-                        <h5>
-                            Martha Brown<br />
-                            <span> Project Manager </span>
-                            <br />
-                            <span style="font-size:15px;">abdodel5@gmail.com</span>
-                        </h5>
-                        <p class="card-text">
-                            “ Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-                            impedit quo minus id quod maxime placeat ”
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="card text-center">
-                    <img class="card-img-top" src="https://images.unsplash.com/photo-1549836938-d278c5d46d20?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=303&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=50&w=303" alt="">
-                    <div class="card-body">
-                        <h5>
-                            Hanna Lisem<br />
-                            <span> Project Manager </span>
-                            <br />
-                            <span style="font-size:15px;">abdodel5@gmail.com</span>
-                        </h5>
-                        <p class="card-text">
-                            “ Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-                            impedit quo minus id quod maxime placeat ”
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--================ End Testimonial Area =================-->
-    <!--================ Start Send testimonial Area =================-->
-    <center>
-        <section class="newsletter_area" id="sendtestimonial">
-            <div class="col-12 col-lg-6 bg-white shadow p-3">
-                <div class="form w-100 pb-2">
-                    <h2 style="font-size:30px;">Send Me Testimonial</h2>
-                    <form action="#" class="form-group form-row" enctype="multipart/form-data">
-                        <div class="col-lg-12 mb-3">
-                            <input type="text" placeholder="Your Name" id="inputFirstName" class="shadow form-control form-control-lg">
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <input type="email" placeholder="email address" id="inputEmail" class="shadow form-control form-control-lg">
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <input type="text" placeholder="Job Title" id="inputJobTitle" class="shadow form-control form-control-lg">
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <div class="shadow custom-file">
-                                <input type="file" class="shadow custom-file-input" id="inputGroupFile01"
-                                       aria-describedby="inputGroupFileAddon01">
-                                <label class="custom-file-label" for="inputGroupFile01">Choose Photo</label>
+
+            <br />
+        }
+        else
+        {
+            <div class="owl-carousel owl-carousel1 owl-theme">
+                @foreach (var item in Model.TestimonialsVmAll)
+                {
+                    <div>
+                        <div class="card text-center">
+                            @if (item.Photo != null)
+                            {
+                                <img class="card-img-top" src="~/PhotoFiles/PhotoProfile/@item.Photo" alt="">
+                            }
+                            else
+                            {
+                                <img class="card-img-top" src="~/img/img_avatar1.png" alt="">
+                            }
+                            <div class="card-body">
+                                <h5>
+                                    @item.Name<br />
+                                    <span> @item.JobTitle </span>
+                                    <br />
+                                    @if (item.CompanyName != null)
+                                    {
+                                        <span style="font-size:18px;">@item.CompanyName</span>
+                                        <br />
+                                    }
+                                    <span style="font-size:15px;">@item.Email</span>
+                                </h5>
+                               
+                                <p class="card-text">
+                                    “ @item.Message ”
+                                </p>
                             </div>
                         </div>
-                        <div class="col-lg-12 mb-3">
-                            <textarea name="message" placeholder="message" id="message" rows="8" class="shadow form-control form-control-lg"></textarea>
-                        </div>
-                        <button type="submit" class="primary_btn btn-block">
-                            <span>Submit</span>
-                        </button>
-                    </form>
-                </div>
+                    </div>
+
+                }
             </div>
-        </section>
-    </center>
+        }
+
+    </div>
+
+    <!--================ End Testimonial Area =================-->
+    <!--================ Start Send testimonial Area =================-->
+    @if (signInManager.IsSignedIn(User))
+    {
+        <center>
+            <section class="newsletter_area" id="sendtestimonial">
+                <div class="col-12 col-lg-6 bg-white shadow p-3">
+                    <div class="form w-100 pb-2">
+                        <h2 style="font-size:30px;">Send Me Testimonial</h2>
+                        <center>
+                            @if (Model.ApplicationUserVm.PhotoUrl != null)
+                            {
+                                <span class="user-profile"><img src="~/PhotoFiles/PhotoProfile/@Model.ApplicationUserVm.PhotoUrl" class="img-circle" style="height:80px; width:80px;" alt="user avatar"></span>
+                            }
+                            else
+                            {
+                                <span class="user-profile"><img src="~/img/img_avatar1.png" class="img-circle" style="height:80px; width:80px;" alt="user avatar"></span>
+                            }
+                        </center>
+                        <br />
+                        <form asp-action="CreateTestimonial" asp-controller="Home" asp-area="Home" method="post" class="form-group form-row">
+                            <input type="hidden" value="@Model.ApplicationUserVm.Id" asp-for="@Model.TestimonialsVm.ApplicationUserId" />
+                            @if (Model.ApplicationUserVm.PhotoUrl != null)
+                            {
+                                <input type="hidden" value="@Model.ApplicationUserVm.PhotoUrl" asp-for="@Model.TestimonialsVm.Photo" />
+                            }
+
+                            @if (Model.ApplicationUserVm.Name != null)
+                            {
+                                <div class="col-lg-12 mb-3">
+                                    <input asp-for="@Model.TestimonialsVm.Name" type="text" placeholder="Your Name" value="@Model.ApplicationUserVm.Name" id="inputFirstName" class="shadow form-control form-control-lg">
+                                    <span asp-validation-for="@Model.TestimonialsVm.Name" class="text-danger"></span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-lg-12 mb-3">
+                                    <input asp-for="@Model.TestimonialsVm.Name" type="text" placeholder="Your Name" value="@Model.ApplicationUserVm.UserName" id="inputFirstName" class="shadow form-control form-control-lg">
+                                    <span asp-validation-for="@Model.TestimonialsVm.Name" class="text-danger"></span>
+                                </div>
+                            }
+
+                            <div class="col-lg-12 mb-3">
+                                <input asp-for="@Model.TestimonialsVm.Email" type="email" placeholder="email address" value="@Model.ApplicationUserVm.Email" id="inputEmail" class="shadow form-control form-control-lg">
+                                <span asp-validation-for="@Model.TestimonialsVm.Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-lg-12 mb-3">
+                                <input asp-for="@Model.TestimonialsVm.JobTitle" type="text" placeholder="Job Title" value="@Model.ApplicationUserVm.JobTitle" class="shadow form-control form-control-lg">
+                                <span asp-validation-for="@Model.TestimonialsVm.JobTitle" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-12 mb-3">
+                                <input asp-for="@Model.TestimonialsVm.CompanyName" type="text" placeholder="Job Title" value="@Model.ApplicationUserVm.CompanyName" class="shadow form-control form-control-lg">
+                                <span asp-validation-for="@Model.TestimonialsVm.CompanyName" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-12 mb-3">
+                                <textarea asp-for="@Model.TestimonialsVm.Message" placeholder="message" rows="4" class="shadow form-control form-control-lg"></textarea>
+                                <span asp-validation-for="@Model.TestimonialsVm.Message" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="primary_btn btn-block">
+                                <span>Submit</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </center>
+    }
+    else
+    {
+        <center>
+            <section class="newsletter_area" id="sendtestimonial">
+                <div class="col-12 col-lg-6 bg-white shadow p-3">
+                    <div class="form w-100 pb-2">
+                        <h2 style="font-size:30px;">Send Me Testimonial</h2>
+                        <form action="#" class="form-group form-row" enctype="multipart/form-data">
+                            <div class="col-lg-12 mb-3">
+                                <input type="text" readonly placeholder="Your Name" id="inputFirstName" class="shadow form-control form-control-lg">
+                            </div>
+                            <div class="col-lg-12 mb-3">
+                                <input type="email" readonly placeholder="email address" id="inputEmail" class="shadow form-control form-control-lg">
+                            </div>
+                            <div class="col-lg-12 mb-3">
+                                <input type="text" readonly placeholder="Job Title" id="inputJobTitle" class="shadow form-control form-control-lg">
+                            </div>
+                            <div class="col-lg-12 mb-3">
+                                <textarea name="message" readonly placeholder="message" id="message" rows="8" class="shadow form-control form-control-lg"></textarea>
+                            </div>
+
+                            <span class="primary_btn btn-block">Please <a asp-area="Identity" asp-controller="Account" asp-action="Login">Login</a> to be able to send your message</span>
+
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </center>
+    }
     <!--================ End Send testimonial Area =================-->
     <!--====================================================
                         PORTFOLIO MODALS
     ======================================================-->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="portfolio-modal modal fade" id="form-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="close-modal" data-dismiss="modal">
@@ -423,484 +315,18 @@
                         <div class="rl"></div>
                     </div>
                 </div>
-                <div class="container">
+                <div class="container flex-container">
                     <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                                <div class="col-md-12">
-                                    <h2 class="text-center">Our Project</h2>
-                                    <div class="heading-border"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img class="img-fluid img-centered" src="img/portfolio/p-1.jpg" alt="">
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                    <ul class="list-inline item-details">
-                                        <li>
-                                            Client:
-                                            <strong>
-                                                <a href="#">Techs Soft</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Date:
-                                            <strong>
-                                                <a href="#">April 2018</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Service:
-                                            <strong>
-                                                <a href="#">Web Development</a>
-                                            </strong>
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                        <i class="fa fa-times"></i> Close
-                                    </button>
-                                </div>
-                            </div>
+                        <div class="modal-body flex-container">
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                                <div class="col-md-12">
-                                    <h2 class="text-center">Our Project</h2>
-                                    <div class="heading-border"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img class="img-fluid img-centered" src="img/portfolio/p-2.jpg" alt="">
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                    <ul class="list-inline item-details">
-                                        <li>
-                                            Client:
-                                            <strong>
-                                                <a href="#">Techs Soft</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Date:
-                                            <strong>
-                                                <a href="#">April 2018</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Service:
-                                            <strong>
-                                                <a href="#">Web Development</a>
-                                            </strong>
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                        <i class="fa fa-times"></i> Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                                <div class="col-md-12">
-                                    <h2 class="text-center">Our Project</h2>
-                                    <div class="heading-border"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img class="img-fluid img-centered" src="img/portfolio/p-3.jpg" alt="">
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                    <ul class="list-inline item-details">
-                                        <li>
-                                            Client:
-                                            <strong>
-                                                <a href="#">Techs Soft</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Date:
-                                            <strong>
-                                                <a href="#">April 2018</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Service:
-                                            <strong>
-                                                <a href="#">Web Development</a>
-                                            </strong>
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                        <i class="fa fa-times"></i> Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                                <div class="col-md-12">
-                                    <h2 class="text-center">Our Project</h2>
-                                    <div class="heading-border"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img class="img-fluid img-centered" src="img/portfolio/p-4.jpg" alt="">
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                    <ul class="list-inline item-details">
-                                        <li>
-                                            Client:
-                                            <strong>
-                                                <a href="#">Techs Soft</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Date:
-                                            <strong>
-                                                <a href="#">April 2018</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Service:
-                                            <strong>
-                                                <a href="#">Web Development</a>
-                                            </strong>
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                        <i class="fa fa-times"></i> Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                                <div class="col-md-12">
-                                    <h2 class="text-center">Our Project</h2>
-                                    <div class="heading-border"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img class="img-fluid img-centered" src="img/portfolio/p-5.jpg" alt="">
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                    <ul class="list-inline item-details">
-                                        <li>
-                                            Client:
-                                            <strong>
-                                                <a href="#">Techs Soft</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Date:
-                                            <strong>
-                                                <a href="#">April 2018</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Service:
-                                            <strong>
-                                                <a href="#">Web Development</a>
-                                            </strong>
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                        <i class="fa fa-times"></i> Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                                <div class="col-md-12">
-                                    <h2 class="text-center">Our Project</h2>
-                                    <div class="heading-border"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img class="img-fluid img-centered" src="img/portfolio/p-6.jpg" alt="">
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                    <ul class="list-inline item-details">
-                                        <li>
-                                            Client:
-                                            <strong>
-                                                <a href="#">Techs Soft</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Date:
-                                            <strong>
-                                                <a href="#">April 2018</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Service:
-                                            <strong>
-                                                <a href="#">Web Development</a>
-                                            </strong>
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                        <i class="fa fa-times"></i> Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                                <div class="col-md-12">
-                                    <h2 class="text-center">Our Project</h2>
-                                    <div class="heading-border"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img class="img-fluid img-centered" src="img/portfolio/p-7.jpg" alt="">
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                    <ul class="list-inline item-details">
-                                        <li>
-                                            Client:
-                                            <strong>
-                                                <a href="#">Techs Soft</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Date:
-                                            <strong>
-                                                <a href="#">April 2018</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Service:
-                                            <strong>
-                                                <a href="#">Web Development</a>
-                                            </strong>
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                        <i class="fa fa-times"></i> Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal8" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                                <div class="col-md-12">
-                                    <h2 class="text-center">Our Project</h2>
-                                    <div class="heading-border"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img class="img-fluid img-centered" src="img/portfolio/p-8.jpg" alt="">
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                    <ul class="list-inline item-details">
-                                        <li>
-                                            Client:
-                                            <strong>
-                                                <a href="#">Techs Soft</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Date:
-                                            <strong>
-                                                <a href="#">April 2018</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Service:
-                                            <strong>
-                                                <a href="#">Web Development</a>
-                                            </strong>
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                        <i class="fa fa-times"></i> Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal9" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="modal-body">
-                            <div class="title-bar">
-                                <div class="col-md-12">
-                                    <h2 class="text-center">Our Project</h2>
-                                    <div class="heading-border"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img class="img-fluid img-centered" src="img/portfolio/p-9.jpg" alt="">
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Our new Project every processes had become fragmented; meaning quality and service were inconsistent. This lack of standardization was adversely impacting operating costs, productivity and customer satisfaction. For several years now Payfast has worked strategically with innovations as a means of developing new solutions, products and services. In line with this vision, Success was approached to find new payments solutions to offer Payfast customers on their website, including open invoice and partial payments options.</p>
-                                    <ul class="list-inline item-details">
-                                        <li>
-                                            Client:
-                                            <strong>
-                                                <a href="#">Techs Soft</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Date:
-                                            <strong>
-                                                <a href="#">April 2018</a>
-                                            </strong>
-                                        </li>
-                                        <li>
-                                            Service:
-                                            <strong>
-                                                <a href="#">Web Development</a>
-                                            </strong>
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-general btn-white" type="button" data-dismiss="modal">
-                                        <i class="fa fa-times"></i> Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    
 </body>
 
 </html>

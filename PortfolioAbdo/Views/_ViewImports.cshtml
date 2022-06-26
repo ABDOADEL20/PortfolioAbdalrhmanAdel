@@ -1,1 +1,9 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@using Microsoft.Extensions.Localization
+@using PortfolioAbdo.Languages
+@using PortfolioAbdo.BL.Models
+@using PortfolioAbdo.BL.Interface
+@using Microsoft.AspNetCore.Identity;
+
+@inject IStringLocalizer<SharedResource> SharedLocalizer

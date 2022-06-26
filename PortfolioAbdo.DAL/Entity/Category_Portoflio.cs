@@ -14,5 +14,6 @@ namespace PortfolioAbdo.DAL.Entity
         public string Category_Name { get; set; }
         public bool Is_Deleted { get; set; }
 
+        public ICollection<Portfolio> Portfolio { get; set; }
     }
 }

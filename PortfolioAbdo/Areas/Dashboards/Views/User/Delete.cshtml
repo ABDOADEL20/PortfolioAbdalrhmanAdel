@@ -1,26 +1,22 @@
-﻿
+﻿@model IdentityUser
 @{
     Layout = null;
 }
 
 <div class="row">
     <div class="col-md-7">
-        <form asp-action="Delete">
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        <form asp-action="Delete" asp-controller="User" asp-area="Dashboards">
             <div class="form-group">
-                <label class="control-label">@SharedLocalizer["ID:"]</label>
-                <input type="text" readonly class="form-control" />
-                @*<span asp-validation-for="AccountNumber" class="text-danger"></span>*@
+                <label asp-for="Id" class="control-label">@SharedLocalizer["ID:"]</label>
+                <input asp-for="Id" type="text" readonly class="form-control" />
             </div>
             <div class="form-group">
-                <label class="control-label">@SharedLocalizer["UserName"]:</label>
-                <input type="text" readonly class="form-control" />
-                @*<span asp-validation-for="BeneficiaryName" class="text-danger"></span>*@
+                <label asp-for="UserName" class="control-label">@SharedLocalizer["UserName"]:</label>
+                <input asp-for="UserName" type="text" readonly class="form-control" />
             </div>
             <div class="form-group">
-                <label class="control-label">@SharedLocalizer["Email"]:</label>
-                <input type="text" readonly class="form-control" />
-                @*<span asp-validation-for="BeneficiaryName" class="text-danger"></span>*@
+                <label asp-for="Email" class="control-label">@SharedLocalizer["Email"]:</label>
+                <input asp-for="Email" type="text" readonly class="form-control" />
             </div>
             <div class="form-group">
                 <input type="submit" value=@SharedLocalizer["Delete"] class="btn btn-danger" />

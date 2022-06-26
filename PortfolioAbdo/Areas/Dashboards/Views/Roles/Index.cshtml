@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<IdentityRole>
 @{
     Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
 }
@@ -25,24 +25,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <th scope="col">Admin</th>
-                                        <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("Edit","Roles",new { Area = "Dashboards" },null,null)', '@SharedLocalizer["UpdateUser"]')">@SharedLocalizer["Update"]</a></td>
-                                        <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("Delete","Roles",new { Area = "Dashboards" },null,null)', '@SharedLocalizer["DeleteUser"]')">@SharedLocalizer["Delete"]</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <th scope="col">Users</th>
-                                        <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("Edit","Roles",new { Area = "Dashboards" },null,null)','Update User')">Update</a></td>
-                                        <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("Delete","Roles",new { Area = "Dashboards" },null,null)','Delete User')">Delete</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <th scope="col">Test</th>
-                                        <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("Edit","Roles",new { Area = "Dashboards" },null,null)','Update User')">Update</a></td>
-                                        <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("Delete","Roles",new { Area = "Dashboards" },null,null)','Delete User')">Delete</a></td>
-                                    </tr>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th scope="row">@item.Id</th>
+                                            <th scope="col">@item.Name</th>
+                                            <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("Edit","Roles",new { Area = "Dashboards",id=item.Id },null,null)', '@SharedLocalizer["UpdateRole"]')">@SharedLocalizer["Update"]</a></td>
+                                            <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("Delete","Roles",new { Area = "Dashboards",id=item.Id },null,null)', '@SharedLocalizer["DeleteRole"]')">@SharedLocalizer["Delete"]</a></td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
