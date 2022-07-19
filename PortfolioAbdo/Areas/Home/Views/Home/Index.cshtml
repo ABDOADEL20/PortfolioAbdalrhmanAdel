@@ -8,325 +8,323 @@
 }
 
 
-<!doctype html>
-<html lang="en">
-<body>
-    <!--================ Start Home Banner Area =================-->
-    <section class="home_banner_area" id="home">
-        <div class="banner_inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="banner_content">
-                            <h3 class="text-uppercase">Hell0</h3>
-                            <h1 class="text-uppercase">I am @Model.HomeVmAll.FirstOrDefault().Banner_Name</h1>
-                            <h5 class="text-uppercase">@Model.HomeVmAll.FirstOrDefault().Banner_Job_Title</h5>
-                            <div class="align-items-center">
-                                <a class="primary_btn" href="#"><span>Hire Me</span></a>
-                                <a class="primary_btn tr-bg"asp-action="DownloadFile" asp-controller="Home" asp-area="Home"><span>Get CV</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="home_right_img">
-                            <img class="" src="~/img/banner/home-right.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================ End Home Banner Area =================-->
-    <!--================ Start About Us Area =================-->
-    <section class="about_area section_gap" id="about">
-        <div class="container">
-            <div class="row justify-content-start align-items-center">
-                <div class="col-lg-5">
-                    <div class="about_img">
-                        <img class="" src="~/img/about-us.png" alt="">
-                    </div>
-                </div>
 
-                <div class="offset-lg-1 col-lg-5">
-                    <div class="main_title text-left">
-                        <h2>
-                            let’s <br>
-                            Introduce about <br>
-                            myself
-                        </h2>
-                        <p>
-                            @Model.HomeVmAll.FirstOrDefault().Introduce_your_self
-                        </p>
-                        @*<p>
-                                Is give may shall likeness made yielding spirit a itself together created after sea
-                                is in beast beginning signs open god you're gathering whose gathered cattle let.
-                                Creature whales fruit unto meat the life beginning all in under give two.
-                            </p>*@
-                        <a class="primary_btn" asp-action="DownloadFile" asp-controller="Home" asp-area="Home"><span>Download CV</span></a>
+<!--================ Start Home Banner Area =================-->
+<section class="home_banner_area" id="home">
+    <div class="banner_inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="banner_content">
+                        <h3 class="text-uppercase">Hell0</h3>
+                        <h1 class="text-uppercase">I am @Model.HomeVmAll.FirstOrDefault().Banner_Name</h1>
+                        <h5 class="text-uppercase">@Model.HomeVmAll.FirstOrDefault().Banner_Job_Title</h5>
+                        <div class="align-items-center">
+                            <a class="primary_btn" href="#"><span>Hire Me</span></a>
+                            <a class="primary_btn tr-bg" asp-action="DownloadFile" asp-controller="Home" asp-area="Home"><span>Get CV</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="home_right_img">
+                        <img class="" src="~/img/banner/home-right.png" alt="">
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!--================ End About Us Area =================-->
-    <!--================ Srart PhotoExp Area =================-->
-    <section class="brand_area section_gap_bottom">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="row">
-                        @foreach (var item in Model.ExpCompaniesPhotoVm)
+    </div>
+</section>
+<!--================ End Home Banner Area =================-->
+<!--================ Start About Us Area =================-->
+<section class="about_area section_gap" id="about">
+    <div class="container">
+        <div class="row justify-content-start align-items-center">
+            <div class="col-lg-5">
+                <div class="about_img">
+                    <img class="" src="~/img/about-us.png" alt="">
+                </div>
+            </div>
+
+            <div class="offset-lg-1 col-lg-5">
+                <div class="main_title text-left">
+                    <h2>
+                        let’s <br>
+                        Introduce about <br>
+                        myself
+                    </h2>
+                    <p>
+                        @Model.HomeVmAll.FirstOrDefault().Introduce_your_self
+                    </p>
+                    @*<p>
+                            Is give may shall likeness made yielding spirit a itself together created after sea
+                            is in beast beginning signs open god you're gathering whose gathered cattle let.
+                            Creature whales fruit unto meat the life beginning all in under give two.
+                        </p>*@
+                    <a class="primary_btn" asp-action="DownloadFile" asp-controller="Home" asp-area="Home"><span>Download CV</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================ End About Us Area =================-->
+<!--================ Srart PhotoExp Area =================-->
+<section class="brand_area section_gap_bottom">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="row">
+                    @foreach (var item in Model.ExpCompaniesPhotoVm)
+                    {
+                        @if (!Model.ExpCompaniesPhotoVm.Any())
                         {
-                            @if (!Model.ExpCompaniesPhotoVm.Any())
-                            {
-                                <div>
-                                    <center><label class="label-primary">No testimonials available</label></center>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="col-lg-4 col-md-4 col-sm-6">
-                                    <div class="shadow p-3 mb-5 bg-white rounded d-table">
-                                        <div class="d-table-cell text-center">
-                                            <img style="margin: 0 auto; height:100px; width:100px;" src="~/PhotoFiles/PhotoExp/@item.ImageName" alt="">
-                                        </div>
+                            <div>
+                                <center><label class="label-primary">No testimonials available</label></center>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="shadow p-3 mb-5 bg-white rounded d-table">
+                                    <div class="d-table-cell text-center">
+                                        <img style="margin: 0 auto; height:100px; width:100px;" src="~/PhotoFiles/PhotoExp/@item.ImageName" alt="">
                                     </div>
                                 </div>
-                            }
+                            </div>
                         }
-                    </div>
-                </div>
-                <div class="offset-lg-2 col-lg-4 col-md-6">
-                    <div class="client-info">
-                        <div class="d-flex mb-50">
-                            <span class="lage" style="">@Model.HomeVmAll.FirstOrDefault().Years_Of_Experience</span>
-                            <span class="smll">Years Experience Working</span>
-                        </div>
-                        <div class="call-now d-flex">
-                            <div>
-                                <span class="fa fa-phone"></span>
-                            </div>
-                            <div class="ml-15">
-                                <p>call us now</p>
-                                <h3>(+20)1014887842</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================ End PhotoExp Area =================-->
-    <!--================ Start Features Area =================-->
-    <!--================ End Features Area =================-->
-    <!--================Start Portfolio Area =================-->
-    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="portfolio">
-        <div class="row my-auto">
-            <div class="col-12">
-                <h2 class="  text-center">Portfolio</h2>
-                <div class="mb-5 heading-border"></div>
-            </div>
-            <div class="col-md-12">
-                <div class="port-head-cont" >
-                    @foreach (var item in Model.Category_PortoflioVmAll)
-                    {
-                            <button type="submit" class="btn btn-general btn-green filter-b " data-filter=@item.Category_Name>@item.Category_Name</button>
                     }
                 </div>
             </div>
-        </div>
-        <div class="row my-auto">
-            @foreach (var item in Model.PortfolioVmAll)
-            {
-                <div class="col-sm-4 portfolio-item @item.Category_Portoflio.Category_Name">
-                    <a class="portfolio-link" onclick="showInPopup('@Url.Action("DetailsPortfoilo","Home",new { Area = "Home" ,id=item.Id },null,null)',null)" data-toggle="modal">
-                        <div class="caption-port">
-                            <div class="caption-port-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
+            <div class="offset-lg-2 col-lg-4 col-md-6">
+                <div class="client-info">
+                    <div class="d-flex mb-50">
+                        <span class="lage" style="">@Model.HomeVmAll.FirstOrDefault().Years_Of_Experience</span>
+                        <span class="smll">Years Experience Working</span>
+                    </div>
+                    <div class="call-now d-flex">
+                        <div>
+                            <span class="fa fa-phone"></span>
                         </div>
-                        <img class="img-fluid" src="~/PhotoFiles/@item.Project_Photo_Name" alt="">
-                    </a>
-                </div>
-            }
-        </div>
-    </section>
-    <!--================End Portfolio Area =================-->
-    <!--================ Start Testimonial Area =================-->
-
-    <div class="gtco-testimonials" id="testimonials">
-        <h2>Testimonials</h2>
-        @if (!Model.TestimonialsVmAll.Any())
-        {
-
-            <div>
-                <center><label class="label-primary">No testimonials available</label></center>
-            </div>
-
-            <br />
-        }
-        else
-        {
-            <div class="owl-carousel owl-carousel1 owl-theme">
-                @foreach (var item in Model.TestimonialsVmAll)
-                {
-                    <div>
-                        <div class="card text-center">
-                            @if (item.Photo != null)
-                            {
-                                <img class="card-img-top" src="~/PhotoFiles/PhotoProfile/@item.Photo" alt="">
-                            }
-                            else
-                            {
-                                <img class="card-img-top" src="~/img/img_avatar1.png" alt="">
-                            }
-                            <div class="card-body">
-                                <h5>
-                                    @item.Name<br />
-                                    <span> @item.JobTitle </span>
-                                    <br />
-                                    @if (item.CompanyName != null)
-                                    {
-                                        <span style="font-size:18px;">@item.CompanyName</span>
-                                        <br />
-                                    }
-                                    <span style="font-size:15px;">@item.Email</span>
-                                </h5>
-                               
-                                <p class="card-text">
-                                    “ @item.Message ”
-                                </p>
-                            </div>
+                        <div class="ml-15">
+                            <p>call us now</p>
+                            <h3>(+20)1014887842</h3>
                         </div>
                     </div>
-
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================ End PhotoExp Area =================-->
+<!--================ Start Features Area =================-->
+<!--================ End Features Area =================-->
+<!--================Start Portfolio Area =================-->
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="portfolio">
+    <div class="row my-auto">
+        <div class="col-12">
+            <h2 class="  text-center">Portfolio</h2>
+            <div class="mb-5 heading-border"></div>
+        </div>
+        <div class="col-md-12">
+            <div class="port-head-cont">
+                @foreach (var item in Model.Category_PortoflioVmAll)
+                {
+                    <button type="submit" class="btn btn-general btn-green filter-b " data-filter=@item.Category_Name>@item.Category_Name</button>
                 }
             </div>
-        }
-
+        </div>
     </div>
-
-    <!--================ End Testimonial Area =================-->
-    <!--================ Start Send testimonial Area =================-->
-    @if (signInManager.IsSignedIn(User))
-    {
-        <center>
-            <section class="newsletter_area" id="sendtestimonial">
-                <div class="col-12 col-lg-6 bg-white shadow p-3">
-                    <div class="form w-100 pb-2">
-                        <h2 style="font-size:30px;">Send Me Testimonial</h2>
-                        <center>
-                            @if (Model.ApplicationUserVm.PhotoUrl != null)
-                            {
-                                <span class="user-profile"><img src="~/PhotoFiles/PhotoProfile/@Model.ApplicationUserVm.PhotoUrl" class="img-circle" style="height:80px; width:80px;" alt="user avatar"></span>
-                            }
-                            else
-                            {
-                                <span class="user-profile"><img src="~/img/img_avatar1.png" class="img-circle" style="height:80px; width:80px;" alt="user avatar"></span>
-                            }
-                        </center>
-                        <br />
-                        <form asp-action="CreateTestimonial" asp-controller="Home" asp-area="Home" method="post" class="form-group form-row">
-                            <input type="hidden" value="@Model.ApplicationUserVm.Id" asp-for="@Model.TestimonialsVm.ApplicationUserId" />
-                            @if (Model.ApplicationUserVm.PhotoUrl != null)
-                            {
-                                <input type="hidden" value="@Model.ApplicationUserVm.PhotoUrl" asp-for="@Model.TestimonialsVm.Photo" />
-                            }
-
-                            @if (Model.ApplicationUserVm.Name != null)
-                            {
-                                <div class="col-lg-12 mb-3">
-                                    <input asp-for="@Model.TestimonialsVm.Name" type="text" placeholder="Your Name" value="@Model.ApplicationUserVm.Name" id="inputFirstName" class="shadow form-control form-control-lg">
-                                    <span asp-validation-for="@Model.TestimonialsVm.Name" class="text-danger"></span>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="col-lg-12 mb-3">
-                                    <input asp-for="@Model.TestimonialsVm.Name" type="text" placeholder="Your Name" value="@Model.ApplicationUserVm.UserName" id="inputFirstName" class="shadow form-control form-control-lg">
-                                    <span asp-validation-for="@Model.TestimonialsVm.Name" class="text-danger"></span>
-                                </div>
-                            }
-
-                            <div class="col-lg-12 mb-3">
-                                <input asp-for="@Model.TestimonialsVm.Email" type="email" placeholder="email address" value="@Model.ApplicationUserVm.Email" id="inputEmail" class="shadow form-control form-control-lg">
-                                <span asp-validation-for="@Model.TestimonialsVm.Email" class="text-danger"></span>
-                            </div>
-
-                            <div class="col-lg-12 mb-3">
-                                <input asp-for="@Model.TestimonialsVm.JobTitle" type="text" placeholder="Job Title" value="@Model.ApplicationUserVm.JobTitle" class="shadow form-control form-control-lg">
-                                <span asp-validation-for="@Model.TestimonialsVm.JobTitle" class="text-danger"></span>
-                            </div>
-                            <div class="col-lg-12 mb-3">
-                                <input asp-for="@Model.TestimonialsVm.CompanyName" type="text" placeholder="Job Title" value="@Model.ApplicationUserVm.CompanyName" class="shadow form-control form-control-lg">
-                                <span asp-validation-for="@Model.TestimonialsVm.CompanyName" class="text-danger"></span>
-                            </div>
-                            <div class="col-lg-12 mb-3">
-                                <textarea asp-for="@Model.TestimonialsVm.Message" placeholder="message" rows="4" class="shadow form-control form-control-lg"></textarea>
-                                <span asp-validation-for="@Model.TestimonialsVm.Message" class="text-danger"></span>
-                            </div>
-                            <button type="submit" class="primary_btn btn-block">
-                                <span>Submit</span>
-                            </button>
-                        </form>
+    <div class="row my-auto">
+        @foreach (var item in Model.PortfolioVmAll)
+        {
+            <div class="col-sm-4 portfolio-item @item.Category_Portoflio.Category_Name">
+                <a class="portfolio-link" onclick="showInPopup('@Url.Action("DetailsPortfoilo","Home",new { Area = "Home" ,id=item.Id },null,null)',null)" data-toggle="modal">
+                    <div class="caption-port">
+                        <div class="caption-port-content">
+                            <i class="fa fa-search-plus fa-3x"></i>
+                        </div>
                     </div>
-                </div>
-            </section>
-        </center>
+                    <img class="img-fluid" src="~/PhotoFiles/@item.Project_Photo_Name" alt="">
+                </a>
+            </div>
+        }
+    </div>
+</section>
+<!--================End Portfolio Area =================-->
+<!--================ Start Testimonial Area =================-->
+
+<div class="gtco-testimonials" id="testimonials">
+    <h2>Testimonials</h2>
+    @if (!Model.TestimonialsVmAll.Any())
+    {
+
+        <div>
+            <center><label class="label-primary">No testimonials available</label></center>
+        </div>
+
+        <br />
     }
     else
     {
-        <center>
-            <section class="newsletter_area" id="sendtestimonial">
-                <div class="col-12 col-lg-6 bg-white shadow p-3">
-                    <div class="form w-100 pb-2">
-                        <h2 style="font-size:30px;">Send Me Testimonial</h2>
-                        <form action="#" class="form-group form-row" enctype="multipart/form-data">
-                            <div class="col-lg-12 mb-3">
-                                <input type="text" readonly placeholder="Your Name" id="inputFirstName" class="shadow form-control form-control-lg">
-                            </div>
-                            <div class="col-lg-12 mb-3">
-                                <input type="email" readonly placeholder="email address" id="inputEmail" class="shadow form-control form-control-lg">
-                            </div>
-                            <div class="col-lg-12 mb-3">
-                                <input type="text" readonly placeholder="Job Title" id="inputJobTitle" class="shadow form-control form-control-lg">
-                            </div>
-                            <div class="col-lg-12 mb-3">
-                                <textarea name="message" readonly placeholder="message" id="message" rows="8" class="shadow form-control form-control-lg"></textarea>
-                            </div>
+        <div class="owl-carousel owl-carousel1 owl-theme">
+            @foreach (var item in Model.TestimonialsVmAll)
+            {
+                <div>
+                    <div class="card text-center">
+                        @if (item.Photo != null)
+                        {
+                            <img class="card-img-top" src="~/PhotoFiles/PhotoProfile/@item.Photo" alt="">
+                        }
+                        else
+                        {
+                            <img class="card-img-top" src="~/img/img_avatar1.png" alt="">
+                        }
+                        <div class="card-body">
+                            <h5>
+                                @item.Name<br />
+                                <span> @item.JobTitle </span>
+                                <br />
+                                @if (item.CompanyName != null)
+                                {
+                                    <span style="font-size:18px;">@item.CompanyName</span>
+                                    <br />
+                                }
+                                <span style="font-size:15px;">@item.Email</span>
+                            </h5>
 
-                            <span class="primary_btn btn-block">Please <a asp-area="Identity" asp-controller="Account" asp-action="Login">Login</a> to be able to send your message</span>
-
-                        </form>
-                    </div>
-                </div>
-            </section>
-        </center>
-    }
-    <!--================ End Send testimonial Area =================-->
-    <!--====================================================
-                        PORTFOLIO MODALS
-    ======================================================-->
-    <div class="portfolio-modal modal fade" id="form-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
-                </div>
-                <div class="container flex-container">
-                    <div class="row">
-                        <div class="modal-body flex-container">
-
+                            <p class="card-text">
+                                “ @item.Message ”
+                            </p>
                         </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    }
+
+</div>
+
+<!--================ End Testimonial Area =================-->
+<!--================ Start Send testimonial Area =================-->
+@if (signInManager.IsSignedIn(User))
+{
+    <center>
+        <section class="newsletter_area" id="sendtestimonial">
+            <div class="col-12 col-lg-6 bg-white shadow p-3">
+                <div class="form w-100 pb-2">
+                    <h2 style="font-size:30px;">Send Me Testimonial</h2>
+                    <center>
+                        @if (Model.ApplicationUserVm.PhotoUrl != null)
+                        {
+                            <span class="user-profile"><img src="~/PhotoFiles/PhotoProfile/@Model.ApplicationUserVm.PhotoUrl" class="img-circle" style="height:80px; width:80px;" alt="user avatar"></span>
+                        }
+                        else
+                        {
+                            <span class="user-profile"><img src="~/img/img_avatar1.png" class="img-circle" style="height:80px; width:80px;" alt="user avatar"></span>
+                        }
+                    </center>
+                    <br />
+                    <form asp-action="CreateTestimonial" asp-controller="Home" asp-area="Home" method="post" class="form-group form-row">
+                        <input type="hidden" value="@Model.ApplicationUserVm.Id" asp-for="@Model.TestimonialsVm.ApplicationUserId" />
+                        @if (Model.ApplicationUserVm.PhotoUrl != null)
+                        {
+                            <input type="hidden" value="@Model.ApplicationUserVm.PhotoUrl" asp-for="@Model.TestimonialsVm.Photo" />
+                        }
+
+                        @if (Model.ApplicationUserVm.Name != null)
+                        {
+                            <div class="col-lg-12 mb-3">
+                                <input asp-for="@Model.TestimonialsVm.Name" type="text" placeholder="Your Name" value="@Model.ApplicationUserVm.Name" id="inputFirstName" class="shadow form-control form-control-lg">
+                                <span asp-validation-for="@Model.TestimonialsVm.Name" class="text-danger"></span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-12 mb-3">
+                                <input asp-for="@Model.TestimonialsVm.Name" type="text" placeholder="Your Name" value="@Model.ApplicationUserVm.UserName" id="inputFirstName" class="shadow form-control form-control-lg">
+                                <span asp-validation-for="@Model.TestimonialsVm.Name" class="text-danger"></span>
+                            </div>
+                        }
+
+                        <div class="col-lg-12 mb-3">
+                            <input asp-for="@Model.TestimonialsVm.Email" type="email" placeholder="email address" value="@Model.ApplicationUserVm.Email" id="inputEmail" class="shadow form-control form-control-lg">
+                            <span asp-validation-for="@Model.TestimonialsVm.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-lg-12 mb-3">
+                            <input asp-for="@Model.TestimonialsVm.JobTitle" type="text" placeholder="Job Title" value="@Model.ApplicationUserVm.JobTitle" class="shadow form-control form-control-lg">
+                            <span asp-validation-for="@Model.TestimonialsVm.JobTitle" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <input asp-for="@Model.TestimonialsVm.CompanyName" type="text" placeholder="Job Title" value="@Model.ApplicationUserVm.CompanyName" class="shadow form-control form-control-lg">
+                            <span asp-validation-for="@Model.TestimonialsVm.CompanyName" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <textarea asp-for="@Model.TestimonialsVm.Message" placeholder="message" rows="4" class="shadow form-control form-control-lg"></textarea>
+                            <span asp-validation-for="@Model.TestimonialsVm.Message" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="primary_btn btn-block">
+                            <span>Submit</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </center>
+}
+else
+{
+    <center>
+        <section class="newsletter_area" id="sendtestimonial">
+            <div class="col-12 col-lg-6 bg-white shadow p-3">
+                <div class="form w-100 pb-2">
+                    <h2 style="font-size:30px;">Send Me Testimonial</h2>
+                    <form action="#" class="form-group form-row" enctype="multipart/form-data">
+                        <div class="col-lg-12 mb-3">
+                            <input type="text" readonly placeholder="Your Name" id="inputFirstName" class="shadow form-control form-control-lg">
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <input type="email" readonly placeholder="email address" id="inputEmail" class="shadow form-control form-control-lg">
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <input type="text" readonly placeholder="Job Title" id="inputJobTitle" class="shadow form-control form-control-lg">
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <textarea name="message" readonly placeholder="message" id="message" rows="8" class="shadow form-control form-control-lg"></textarea>
+                        </div>
+
+                        <span class="primary_btn btn-block">Please <a asp-area="Identity" asp-controller="Account" asp-action="Login">Login</a> to be able to send your message</span>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+    </center>
+}
+<!--================ End Send testimonial Area =================-->
+<!--====================================================
+                    PORTFOLIO MODALS
+======================================================-->
+<div class="portfolio-modal modal fade" id="form-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl"></div>
+                </div>
+            </div>
+            <div class="container flex-container">
+                <div class="row">
+                    <div class="modal-body flex-container">
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+@section MicrosoftValidation{
+    <script src="~/jquery-validate/jquery.validate.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
 
-    
-</body>
-
-</html>

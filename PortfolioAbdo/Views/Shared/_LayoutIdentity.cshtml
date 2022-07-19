@@ -22,7 +22,7 @@
     <!-- Custom Style-->
     <link href="~/assets/css/app-style.css" rel="stylesheet" />
 </head>
-<body>
+<body class="bg-theme bg-theme1">
     <div>
         @RenderBody()
     </div>
@@ -36,6 +36,8 @@
 
     <!-- Custom scripts -->
     <script src="~/assets/js/app-script.js"></script>
+
+    @await RenderSectionAsync("MicrosoftValidation", required: false)
     @await Component.InvokeAsync("NToastNotify")
 
 </body>

@@ -3,77 +3,76 @@
     Layout = "~/Views/Shared/_LayoutIdentity.cshtml";
     ViewData["Title"] = SharedLocalizer["AbdalrhmanAdelPortfolio|Register"];
 }
-<!DOCTYPE html>
-<html lang="en">
-<body class="bg-theme bg-theme1">
 
-    <!-- start loader -->
-    <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner"><div class="loader"></div></div></div></div>
-    <!-- end loader -->
-        <div class="card card-authentication1 mx-auto my-4">
-            <div class="card-body">
-                <div class="card-content p-2">
-                    <div class="text-center">
-                        <img src="~/img/Black_Elegant_and_Minimalist_Furniture_Logo__2_-removebg-preview.png" style="height:90px; width:90px;" alt="logo icon">
+<!-- start loader -->
+<div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner"><div class="loader"></div></div></div></div>
+<!-- end loader -->
+<div class="card card-authentication1 mx-auto my-4">
+    <div class="card-body">
+        <div class="card-content p-2">
+            <div class="text-center">
+                <img src="~/img/Black_Elegant_and_Minimalist_Furniture_Logo__2_-removebg-preview.png" style="height:90px; width:90px;" alt="logo icon">
+            </div>
+            <div class="card-title text-uppercase text-center py-3">@SharedLocalizer["SignUp"]</div>
+            <form asp-area="Identity" asp-controller="Account" asp-action="Registration">
+                @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                <div class="form-group">
+                    <label>@SharedLocalizer["UserName"]</label>
+                    <div class="position-relative has-icon-right">
+                        <input type="text" asp-for="UserName" class="form-control input-shadow" placeholder="Enter Your UserName">
+                        <div class="form-control-position">
+                            <i class="icon-user"></i>
+                        </div>
                     </div>
-                    <div class="card-title text-uppercase text-center py-3">@SharedLocalizer["SignUp"]</div>
-                    <form asp-area="Identity" asp-controller="Account" asp-action="Registration">
-                        <div asp-validation-summary="All" class="text-danger"></div>
-                        <div class="form-group">
-                            <label>@SharedLocalizer["UserName"]</label>
-                            <div class="position-relative has-icon-right">
-                                <input type="text" asp-for="UserName" class="form-control input-shadow" placeholder="Enter Your UserName">
-                                <div class="form-control-position">
-                                    <i class="icon-user"></i>
-                                </div>
-                            </div>
-                            <span asp-validation-for="UserName" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label>@SharedLocalizer["Email"]</label>
-                            <div class="position-relative has-icon-right">
-                                <input type="email" asp-for="Email" class="form-control input-shadow" placeholder="Enter Your Email ID">
-                                <div class="form-control-position">
-                                    <i class="icon-envelope-open"></i>
-                                </div>
-                            </div>
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label>@SharedLocalizer["Password"]</label>
-                            <div class="position-relative has-icon-right">
-                                <input asp-for="Password" type="password" class="form-control input-shadow" placeholder="Password">
-                                <div class="form-control-position">
-                                    <i class="icon-lock"></i>
-                                </div>
-                            </div>
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label>@SharedLocalizer["ConfirmPassword"]</label>
-                            <div class="position-relative has-icon-right">
-                                <input type="password" asp-for="ConfirmPassword" class="form-control input-shadow" placeholder="Confirm Password">
-                                <div class="form-control-position">
-                                    <i class="icon-lock"></i>
-                                </div>
-                            </div>
-                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <div class="icheck-material-white">
-                                <input asp-for="IsAgree" type="checkbox" checked="" />
-                                <label for="user-checkbox">@SharedLocalizer["IAgreeWithTerms&Conditions"]</label>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-light btn-block waves-effect waves-light">@SharedLocalizer["SignUp"]</button>
-                    </form>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="card-footer text-center py-3">
-                <p class="text-warning mb-0">@SharedLocalizer["Alreadyhaveanaccount?"] <a asp-area="Identity" asp-controller="Account" asp-action="Login">@SharedLocalizer["SignInhere"]</a></p>
-            </div>
-        </div>
-</body>
-</html>
+                <div class="form-group">
+                    <label>@SharedLocalizer["Email"]</label>
+                    <div class="position-relative has-icon-right">
+                        <input type="email" asp-for="Email" class="form-control input-shadow" placeholder="Enter Your Email ID">
+                        <div class="form-control-position">
+                            <i class="icon-envelope-open"></i>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>@SharedLocalizer["Password"]</label>
+                    <div class="position-relative has-icon-right">
+                        <input asp-for="Password" type="password" class="form-control input-shadow" placeholder="Password">
+                        <div class="form-control-position">
+                            <i class="icon-lock"></i>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>@SharedLocalizer["ConfirmPassword"]</label>
+                    <div class="position-relative has-icon-right">
+                        <input type="password" asp-for="ConfirmPassword" class="form-control input-shadow" placeholder="Confirm Password">
+                        <div class="form-control-position">
+                            <i class="icon-lock"></i>
+                        </div>
+                    </div>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="icheck-material-white">
+                        <input asp-for="IsAgree" type="checkbox" checked="" />
+                        <label for="user-checkbox">@SharedLocalizer["IAgreeWithTerms&Conditions"]</label>
+                    </div>
+                </div>
 
+                <button type="submit" class="btn btn-light btn-block waves-effect waves-light">@SharedLocalizer["SignUp"]</button>
+            </form>
+        </div>
+    </div>
+    <div class="card-footer text-center py-3">
+        <p class="text-warning mb-0">@SharedLocalizer["Alreadyhaveanaccount?"] <a asp-area="Identity" asp-controller="Account" asp-action="Login">@SharedLocalizer["SignInhere"]</a></p>
+    </div>
+</div>
+
+@section MicrosoftValidation{
+    <script src="~/jquery-validate/jquery.validate.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}

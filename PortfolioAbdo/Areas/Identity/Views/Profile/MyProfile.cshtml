@@ -58,8 +58,8 @@
                 </ul>
 
                 <ul class="navbar-nav align-items-center right-nav-link">
-                    <li class="nav-item dropdown-lg">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" asp-action="Index" asp-controller="Home" asp-area="Home">
+                    <li>
+                        <a class="nav-link" asp-action="Index" asp-controller="Home" asp-area="Home">
                             <i class="fa fa-home"></i>
                         </a>
                     </li>
@@ -123,7 +123,7 @@
                                 <div class="tab-content p-3">
                                     <div class="tab-pane active" id="messages">
                                         <div class="table-responsive">
-                                            <table id="example" class="table table-bordered table-striped table-hover js-basic-example dataTable text-center font-weight-bold" style="width: 100%; white-space: nowrap; table-layout: fixed;">
+                                            <table id="example" class="table table-bordered table-striped table-hover js-basic-example dataTable text-center font-weight-bold" style="width: 100%;">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">@SharedLocalizer["Id"]</th>
@@ -136,13 +136,20 @@
                                                 <tbody>
                                                     @foreach (var item in Model.TestimonialsVmAll)
                                                     {
-                                                        <tr>
-                                                            <th scope="row">@item.Id</th>
-                                                            <td scope="col" style="overflow: hidden; text-overflow: ellipsis;">@item.Message</td>
-                                                            <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("DetailsTestim","Profile",new { Area = "Identity",id=item.Id },null,null)', '@SharedLocalizer["DetailsTestimonials"]')">@SharedLocalizer["Details"]</a></td>
-                                                            <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("UpdateTestim","Profile",new { Area = "Identity",id=item.Id },null,null)', '@SharedLocalizer["UpdateTestimonials"]')">@SharedLocalizer["Update"]</a></td>
-                                                            <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("DeleteTestim","Profile",new { Area = "Identity",id=item.Id },null,null)', '@SharedLocalizer["DeleteTestimonials"]')">@SharedLocalizer["Delete"]</a></td>
-                                                        </tr>
+                                                    <tr>
+                                                        <th scope="row">@item.Id</th>
+                                                        @if (item.Message.Length > 20)
+                                                        {
+                                                            <td>@item.Message.Substring(0, 20)<span>...</span></td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>@item.Message</td>
+                                                        }
+                                                        <td><a class="btn btn-success" onclick="showInPopup('@Url.Action("DetailsTestim","Profile",new { Area = "Identity",id=item.Id },null,null)', '@SharedLocalizer["DetailsTestimonials"]')">@SharedLocalizer["Details"]</a></td>
+                                                        <td><a class="btn btn-info" onclick="showInPopup('@Url.Action("UpdateTestim","Profile",new { Area = "Identity",id=item.Id },null,null)', '@SharedLocalizer["UpdateTestimonials"]')">@SharedLocalizer["Update"]</a></td>
+                                                        <td><a class="btn btn-danger" onclick="showInPopup('@Url.Action("DeleteTestim","Profile",new { Area = "Identity",id=item.Id },null,null)', '@SharedLocalizer["DeleteTestimonials"]')">@SharedLocalizer["Delete"]</a></td>
+                                                    </tr>
                                                     }
                                                 </tbody>
                                             </table>
@@ -157,11 +164,11 @@
                                                 <div class="col-lg-9">
                                                     @if (Model.ApplicationUserVm.Name == null)
                                                     {
-                                                        <input class="form-control" type="text" asp-for="@Model.ApplicationUserVm.Name" value="@Model.ApplicationUserVm.UserName"/>
+                                                        <input class="form-control" type="text" asp-for="@Model.ApplicationUserVm.Name" value="@Model.ApplicationUserVm.UserName" />
                                                     }
                                                     else
                                                     {
-                                                        <input class="form-control" type="text" asp-for="@Model.ApplicationUserVm.Name"/>
+                                                        <input class="form-control" type="text" asp-for="@Model.ApplicationUserVm.Name" />
                                                     }
                                                 </div>
                                             </div>
